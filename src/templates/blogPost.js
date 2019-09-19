@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import { kebabCase } from "lodash"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -28,6 +29,29 @@ class BlogPostTemplate extends React.Component {
             >
               {post.frontmatter.title}
             </h1>
+
+            <h3>tags</h3>
+            {post.frontmatter.tags ? (
+              <div className="tags-container">
+                {post.frontmatter.tags.map(tag => (
+                  <p key={tag + `tag`}>
+                    <Link to={`/tag/${kebabCase(tag)}/`}>{tag}</Link>
+                  </p>
+                ))}
+              </div>
+            ) : null}
+
+            <h3>categories</h3>
+            {post.frontmatter.categories ? (
+              <div className="categories-container">
+                {post.frontmatter.categories.map(cat => (
+                  <p key={cat + `category`}>
+                    <Link to={`/category/${kebabCase(cat)}/`}>{cat}</Link>
+                  </p>
+                ))}
+              </div>
+            ) : null}
+
             <p
               style={{
                 ...scale(-1 / 5),
@@ -95,9 +119,12 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       html
       frontmatter {
+        date(formatString: "LLL")
         title
-        date(formatString: "MMMM DD, YYYY")
+        subtitle
         description
+        categories
+        tags
       }
     }
   }
