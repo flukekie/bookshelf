@@ -3,7 +3,7 @@ module.exports = {
     title: `Flukekie`,
     author: `Flukekie`,
     description: `That corner of the internet`,
-    siteUrl: `https://flukekie.net`,
+    siteUrl: `https://flukekie-net.netlify.com/`,
     social: {
       twitter: `_flukekie`,
     },
