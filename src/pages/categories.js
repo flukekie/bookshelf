@@ -1,10 +1,6 @@
 import React from "react"
-
-// Utilities
 import kebabCase from "lodash/kebabCase"
 
-// Components
-import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
 
 const TagsPage = ({
@@ -16,7 +12,6 @@ const TagsPage = ({
   },
 }) => (
   <div>
-    <Helmet title={title} />
     <div>
       <h1>Categories</h1>
       <ul>
@@ -31,7 +26,6 @@ const TagsPage = ({
     </div>
   </div>
 )
-
 
 export default TagsPage
 
