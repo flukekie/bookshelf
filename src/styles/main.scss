@@ -1,4 +1,25 @@
 @charset "utf-8";
-@import '~bulma/sass/utilities/initial-variables';
+@import "~bulma/sass/utilities/initial-variables";
 // Edit your Bulma variables here
-@import '~bulma';
+$primary: #282;
+$footer-padding: 3rem 1.5rem 3rem;
+
+
+// https://www.darraghoriordan.com/2019/01/20/bulma-prismjs-in-gatsby-css-conflicts/
+.token.tag,
+.token.content,
+.token.number {
+  display: inline;
+  padding: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  text-align: inherit;
+  vertical-align: inherit;
+  border-radius: inherit;
+  font-weight: inherit;
+  white-space: inherit;
+  background: inherit;
+  margin: inherit;
+}
+
+@import "~bulma";

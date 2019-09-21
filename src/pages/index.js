@@ -12,27 +12,29 @@ class Homepage extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="All posts" />
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
-          return (
-            <article key={node.fields.slug}>
-              <header>
-                <h3>
-                  <Link to={node.fields.slug}>{title}</Link>
-                </h3>
-                <small>{node.frontmatter.date}</small>
-              </header>
-              <section>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: node.frontmatter.description || node.excerpt,
-                  }}
-                />
-              </section>
-            </article>
-          )
-        })}
+        <SEO title="Homepage" />
+
+        <div className="container">
+          {posts.map(({ node }) => {
+            const title = node.frontmatter.title || node.fields.slug
+            return (
+              <div className="card" key={node.fields.slug}>
+                <div className="card-content">
+                  <h1 className="title is-4">
+                    <Link to={node.fields.slug}>{title}</Link>
+                  </h1>
+                  <h2 className="subtitle is-6">{node.frontmatter.date}</h2>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: node.frontmatter.description || node.excerpt,
+                    }}
+                  ></p>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+        
       </Layout>
     )
   }
@@ -55,7 +57,7 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "LLL")
+            date(formatString: "LL")
             title
             description
           }

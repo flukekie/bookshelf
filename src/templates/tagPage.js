@@ -1,31 +1,43 @@
 import React from "react"
 
-// Components
 import { Link, graphql } from "gatsby"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 const Tags = ({ pageContext, data }) => {
   const { tag } = pageContext
-  const { edges, totalCount } = data.allMarkdownRemark
+  const { posts, totalCount } = data.allMarkdownRemark
   const tagHeader = `${totalCount} post${
     totalCount === 1 ? "" : "s"
   } tagged with "${tag}"`
 
   return (
-    <div>
-      <h1>{tagHeader}</h1>
-      <ul>
-        {edges.map(({ node }) => {
-          const { slug } = node.fields
-          const { title } = node.frontmatter
+    <Layout>
+      <SEO title={`Tag: ${tag}`} />
+      <div class="container">
+        <h1 className="title">{tagHeader}</h1>
+        <button className="button">
+          <Link to="/tags">All tags</Link>
+        </button>
+        {posts.map(({ node }) => {
           return (
-            <li key={slug}>
-              <Link to={slug}>{title}</Link>
-            </li>
+            <div className="card" key={node.fields.slug}>
+              <div className="card-content">
+                <h1 className="title is-4">
+                  <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
+                </h1>
+                <h2 className="subtitle is-6">{node.frontmatter.date}</h2>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: node.frontmatter.description || node.excerpt,
+                  }}
+                ></p>
+              </div>
+            </div>
           )
         })}
-      </ul>
-      <Link to="/tags">All tags</Link>
-    </div>
+      </div>
+    </Layout>
   )
 }
 
@@ -39,13 +51,16 @@ export const pageQuery = graphql`
       filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
       totalCount
-      edges {
+      posts: edges {
         node {
+          excerpt
           fields {
             slug
           }
           frontmatter {
+            date(formatString: "LL")
             title
+            description
           }
         }
       }

@@ -10,8 +10,8 @@ This is the source code of the new [flukekie.net](https://flukekie.net) which is
 
 The blog posts are very likely contain mostly Thai content. But have English UI for most part.
 
-- [ ] Homepage redesign
-- [ ] Post page redesign
+- [x] Homepage redesign
+- [x] Post page redesign
 - [ ] About page
 
 There's more to come.

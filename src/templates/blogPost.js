@@ -2,77 +2,90 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import { kebabCase } from "lodash"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
-    const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout>
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
-        <article>
-          <header>
-            <h1>{post.frontmatter.title}</h1>
 
-            <h3>tags</h3>
-            {post.frontmatter.tags ? (
-              <div className="tags-container">
-                {post.frontmatter.tags.map(tag => (
-                  <p key={tag + `tag`}>
-                    <Link to={`/tag/${kebabCase(tag)}/`}>{tag}</Link>
-                  </p>
-                ))}
+        <section class="hero">
+          <div class="hero-body">
+            <div class="container">
+              <h1 className="title is-2">{post.frontmatter.title}</h1>
+              <h2 className="subtitle is-4">{post.frontmatter.date}</h2>
+              <nav className="level">
+                {/* Left side */}
+                <div className="level-left">
+                  <div className="level-item">
+                    {post.frontmatter.tags ? (
+                      <div className="tags">
+                        {post.frontmatter.tags.map(tag => (
+                          <span className="tag" key={tag + `tag`}>
+                            <Link to={`/tag/${kebabCase(tag)}/`}>{tag}</Link>
+                          </span>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+                {/* Right side */}
+                <div className="level-right">
+                  <div className="level-item">
+                    {post.frontmatter.categories ? (
+                      <div className="tags">
+                        {post.frontmatter.categories.map(cat => (
+                          <span className="tag is-rounded" key={cat + `category`} cat={cat}>
+                            <Link to={`/category/${kebabCase(cat)}/`}>
+                              {cat}
+                            </Link>
+                          </span>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </section>
+        <section
+          className="content container"
+          dangerouslySetInnerHTML={{ __html: post.html }}
+        />
+
+        <section className="container">
+          <nav className="level">
+            {/* Left side */}
+            <div className="level-left">
+              <div className="level-item">
+                {previous && (
+                  <Link to={previous.fields.slug} rel="prev" className="button">
+                    ← {previous.frontmatter.title}
+                  </Link>
+                )}
               </div>
-            ) : null}
-
-            <h3>categories</h3>
-            {post.frontmatter.categories ? (
-              <div className="categories-container">
-                {post.frontmatter.categories.map(cat => (
-                  <p key={cat + `category`}>
-                    <Link to={`/category/${kebabCase(cat)}/`}>{cat}</Link>
-                  </p>
-                ))}
+            </div>
+            {/* Right side */}
+            <div className="level-right">
+              <div className="level-item">
+                {next && (
+                  <Link to={next.fields.slug} rel="next" className="button">
+                    {next.frontmatter.title} →
+                  </Link>
+                )}
               </div>
-            ) : null}
-
-            <p>{post.frontmatter.date}</p>
-          </header>
-          <section dangerouslySetInnerHTML={{ __html: post.html }} />
-          <hr
-
-          />
-          <footer>
-            <Bio />
-          </footer>
-        </article>
-
-        <nav>
-          <ul>
-            <li>
-              {previous && (
-                <Link to={previous.fields.slug} rel="prev">
-                  ← {previous.frontmatter.title}
-                </Link>
-              )}
-            </li>
-            <li>
-              {next && (
-                <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.title} →
-                </Link>
-              )}
-            </li>
-          </ul>
-        </nav>
+            </div>
+          </nav>
+        </section>
       </Layout>
     )
   }
@@ -93,7 +106,7 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       html
       frontmatter {
-        date(formatString: "LLL")
+        date(formatString: "LL")
         title
         subtitle
         description
