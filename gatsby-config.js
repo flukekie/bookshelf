@@ -3,7 +3,7 @@ module.exports = {
     title: `Flukekie`,
     author: `Flukekie`,
     description: `That corner of the internet`,
-    siteUrl: `https://flukekie-net.netlify.com/`,
+    siteUrl: `https://flukekie.net/`,
     social: {
       twitter: `_flukekie`,
     },
@@ -51,13 +51,13 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     //trackingId: `ADD YOUR TRACKING ID HERE`,
-    //   },
-    // },
-    // `gatsby-plugin-feed`,
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `UA-116937216-1`,
+      },
+    },
+    `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
