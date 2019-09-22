@@ -13,6 +13,7 @@ const TagsPage = ({
 }) => (
   <Layout>
     <SEO title="All Tags" />
+    
     <div class="container">
       <h1 className="title">All Tags</h1>
       <div className="field is-grouped is-grouped-multiline">

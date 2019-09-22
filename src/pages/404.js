@@ -10,6 +10,7 @@ class NotFoundPage extends React.Component {
     return (
       <Layout>
         <SEO title="Page Not Found" />
+        
         <section class="hero is-large is-dark">
           <div class="hero-body">
             <div class="container">
