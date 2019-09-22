@@ -1,5 +1,5 @@
 <h1 align="center">
-<a href="https://flukekie.net">flukekie.net</a>
+<a href="https://flukekie.net"><img src="./src/assets/logo.png"/></a>
 </h1>
 
 <div align="center">
@@ -10,8 +10,14 @@ This is the source code of the new [flukekie.net](https://flukekie.net) which is
 
 The blog posts are very likely contain mostly Thai content. But have English UI for most part.
 
-- [x] Homepage redesign
-- [x] Post page redesign
-- [ ] About page
+## Setup
+
+Some classic Gatsby/React/Node app initialization
+
+```shell
+npm i
+gatsby develop
+gatsby build
+```
 
 There's more to come.
