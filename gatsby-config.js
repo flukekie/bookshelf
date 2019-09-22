@@ -43,7 +43,13 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-          `gatsby-remark-autolink-headers`,
+          {
+            resolve:`gatsby-remark-autolink-headers`,
+            options:{
+              offsetY: `-480`,
+            },
+          },
+          
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
         ],

@@ -67,6 +67,10 @@ class BlogPostTemplate extends React.Component {
         </section>
 
         <section className="section">
+        <div
+            className="content container"
+            dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
+          ></div>
           <div
             className="content container"
             dangerouslySetInnerHTML={{ __html: post.html }}
@@ -122,6 +126,7 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      tableOfContents
       frontmatter {
         date(formatString: "LL")
         title
