@@ -7,11 +7,10 @@ import SEO from "../components/seo"
 class Homepage extends React.Component {
   render() {
     const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout>
         <SEO title="Homepage" />
 
         <div className="container">

@@ -4,8 +4,8 @@ class Footer extends React.Component {
   render() {
     //actual beans
     return (
-      <footer class="footer">
-        <div class="content has-text-centered">
+      <footer className="footer">
+        <div className="content has-text-centered">
           <p>
             &copy; {new Date().getFullYear()} Flukekie, Built with{" "}
             <a href="https://www.gatsbyjs.org">Gatsby</a>
