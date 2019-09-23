@@ -8,7 +8,6 @@ class Layout extends React.Component {
   render() {
     const { children } = this.props
 
-    //actual beans
     return (
       <div>
         <Navbar />

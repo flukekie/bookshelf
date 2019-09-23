@@ -93,7 +93,7 @@ class BlogPostTemplate extends React.Component {
                         <Link
                           to={previous.fields.slug}
                           rel="prev"
-                          className="button"
+                          className="button is-fullwidth"
                         >
                           ← {previous.frontmatter.title}
                         </Link>
@@ -107,7 +107,7 @@ class BlogPostTemplate extends React.Component {
                         <Link
                           to={next.fields.slug}
                           rel="next"
-                          className="button"
+                          className="button is-fullwidth"
                         >
                           {next.frontmatter.title} →
                         </Link>
