@@ -6,16 +6,18 @@ import SEO from "../components/seo"
 
 class NotFoundPage extends React.Component {
   render() {
-
     return (
       <Layout>
         <SEO title="Page Not Found" />
-        
-        <section class="hero is-large is-dark">
-          <div class="hero-body">
-            <div class="container">
-              <h1 class="title">Page Not Found</h1>
-              <h2 class="subtitle">This is embarrasing...</h2>
+        <section className="hero is-large is-dark">
+          <div className="hero-body">
+            <div className="container">
+              <div className="columns">
+                <div className="column">
+                  <h1 className="title">Page not found</h1>
+                  <h2 className="subtitle">This is embarrasing...</h2>
+                </div>
+              </div>
             </div>
           </div>
         </section>

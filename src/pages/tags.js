@@ -13,25 +13,43 @@ const TagsPage = ({
 }) => (
   <Layout>
     <SEO title="All Tags" />
-    
-    <div class="container">
-      <h1 className="title">All Tags</h1>
-      <div className="field is-grouped is-grouped-multiline">
-        {group.map(tag => (
-          <div className="control">
-            <div className="tags are-medium has-addons">
-              <Link
-                to={`/tag/${kebabCase(tag.fieldValue)}/`}
-                className="tag is-link"
-              >
-                {_capitalize(tag.fieldValue)}
-              </Link>
-              <span className="tag">{tag.totalCount}</span>
+    <section className="hero is-primary is-bold">
+      <div className="hero-body">
+        <div className="container">
+          <div className="columns">
+            <div className="column">
+              <h1 className="title is-2">All Tags</h1>
             </div>
           </div>
-        ))}
+        </div>
       </div>
-    </div>
+    </section>
+
+    <section className="section">
+      <div className="container">
+        <div className="columns">
+          <div className="column ">
+            <div className="content">
+              <div className="field is-grouped is-grouped-multiline">
+                {group.map(tag => (
+                  <div className="control">
+                    <div className="tags are-medium has-addons">
+                      <Link
+                        to={`/tag/${kebabCase(tag.fieldValue)}/`}
+                        className="tag is-link"
+                      >
+                        {_capitalize(tag.fieldValue)}
+                      </Link>
+                      <span className="tag">{tag.totalCount}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </Layout>
 )
 

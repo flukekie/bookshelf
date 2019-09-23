@@ -13,27 +13,38 @@ class Homepage extends React.Component {
       <Layout>
         <SEO title="Homepage" />
 
-        <div className="container">
-          {posts.map(({ node }) => {
-            const title = node.frontmatter.title || node.fields.slug
-            return (
-              <div className="card" key={node.fields.slug}>
-                <div className="card-content">
-                  <h1 className="title is-4">
-                    <Link to={node.fields.slug}>{title}</Link>
-                  </h1>
-                  <h2 className="subtitle is-6">{node.frontmatter.date}</h2>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: node.frontmatter.description || node.excerpt,
-                    }}
-                  ></p>
+        <section className="section">
+          <div className="container">
+            <div className="columns">
+              <div className="column is-8-desktop is-offset-2-desktop">
+                <div className="content">
+                  {posts.map(({ node }) => {
+                    const title = node.frontmatter.title || node.fields.slug
+                    return (
+                      <div className="card" key={node.fields.slug}>
+                        <div className="card-content">
+                          <h1 className="title is-4">
+                            <Link to={node.fields.slug}>{title}</Link>
+                          </h1>
+                          <h2 className="subtitle is-6">
+                            {node.frontmatter.date}
+                          </h2>
+                          <p
+                            dangerouslySetInnerHTML={{
+                              __html:
+                                node.frontmatter.description || node.excerpt,
+                            }}
+                          ></p>
+                        </div>
+                      </div>
+                    )
+                  })}
                 </div>
               </div>
-            )
-          })}
-        </div>
-        
+            </div>
+          </div>
+        </section>
+
       </Layout>
     )
   }

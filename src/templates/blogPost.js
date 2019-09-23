@@ -17,90 +17,106 @@ class BlogPostTemplate extends React.Component {
           description={post.frontmatter.description || post.excerpt}
         />
 
-        <section className="hero">
+        <section className="hero is-primary is-bold">
           <div className="hero-body">
             <div className="container">
-              <h1 className="title is-2">{post.frontmatter.title}</h1>
-              <h2 className="subtitle is-4">{post.frontmatter.date}</h2>
-            </div>
-          </div>
-          <div className="hero-footer">
-            <div className="container">
-              <nav className="level">
-                {/* Left side */}
-                <div className="level-left">
-                  <div className="level-item">
-                    {post.frontmatter.tags ? (
-                      <div className="tags">
-                        {post.frontmatter.tags.map(tag => (
-                          <span className="tag" key={tag + `tag`}>
-                            <Link to={`/tag/${kebabCase(tag)}/`}>{tag}</Link>
-                          </span>
-                        ))}
+              <div className="columns">
+                <div className="column">
+                  <h1 className="title is-2">{post.frontmatter.title}</h1>
+                  <h2 className="subtitle is-4">{post.frontmatter.date}</h2>
+                  <nav className="level">
+                    {/* Left side */}
+                    <div className="level-left">
+                      <div className="level-item">
+                        {post.frontmatter.tags ? (
+                          <div className="tags">
+                            {post.frontmatter.tags.map(tag => (
+                              <span className="tag" key={tag + `tag`}>
+                                <Link to={`/tag/${kebabCase(tag)}/`}>
+                                  {tag}
+                                </Link>
+                              </span>
+                            ))}
+                          </div>
+                        ) : null}
                       </div>
-                    ) : null}
-                  </div>
-                </div>
-                {/* Right side */}
-                <div className="level-right">
-                  <div className="level-item">
-                    {post.frontmatter.categories ? (
-                      <div className="tags">
-                        {post.frontmatter.categories.map(cat => (
-                          <span
-                            className="tag is-rounded"
-                            key={cat + `category`}
-                            cat={cat}
-                          >
-                            <Link to={`/category/${kebabCase(cat)}/`}>
-                              {cat}
-                            </Link>
-                          </span>
-                        ))}
+                    </div>
+                    {/* Right side */}
+                    <div className="level-right">
+                      <div className="level-item">
+                        {post.frontmatter.categories ? (
+                          <div className="tags">
+                            {post.frontmatter.categories.map(cat => (
+                              <span
+                                className="tag is-rounded"
+                                key={cat + `category`}
+                                cat={cat}
+                              >
+                                <Link to={`/category/${kebabCase(cat)}/`}>
+                                  {cat}
+                                </Link>
+                              </span>
+                            ))}
+                          </div>
+                        ) : null}
                       </div>
-                    ) : null}
-                  </div>
+                    </div>
+                  </nav>
                 </div>
-              </nav>
+              </div>
             </div>
           </div>
         </section>
 
         <section className="section">
-          <div
-            className="content container"
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          ></div>
+          <div className="container">
+            <div className="columns">
+              <div className="column is-8-desktop is-offset-2-desktop">
+                <div
+                  className="content"
+                  dangerouslySetInnerHTML={{ __html: post.html }}
+                ></div>
+              </div>
+            </div>
+          </div>
         </section>
 
-        <section className="container">
+        <section className="section">
           <div className="container">
-            <nav className="level">
-              {/* Left side */}
-              <div className="level-left">
-                <div className="level-item">
-                  {previous && (
-                    <Link
-                      to={previous.fields.slug}
-                      rel="prev"
-                      className="button"
-                    >
-                      ← {previous.frontmatter.title}
-                    </Link>
-                  )}
-                </div>
+            <div className="columns">
+              <div className="column is-8-desktop is-offset-2-desktop">
+                <nav className="level">
+                  {/* Left side */}
+                  <div className="level-left">
+                    <div className="level-item">
+                      {previous && (
+                        <Link
+                          to={previous.fields.slug}
+                          rel="prev"
+                          className="button"
+                        >
+                          ← {previous.frontmatter.title}
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                  {/* Right side */}
+                  <div className="level-right">
+                    <div className="level-item">
+                      {next && (
+                        <Link
+                          to={next.fields.slug}
+                          rel="next"
+                          className="button"
+                        >
+                          {next.frontmatter.title} →
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                </nav>
               </div>
-              {/* Right side */}
-              <div className="level-right">
-                <div className="level-item">
-                  {next && (
-                    <Link to={next.fields.slug} rel="next" className="button">
-                      {next.frontmatter.title} →
-                    </Link>
-                  )}
-                </div>
-              </div>
-            </nav>
+            </div>
           </div>
         </section>
       </Layout>
