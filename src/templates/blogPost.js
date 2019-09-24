@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import { kebabCase } from "lodash"
+import Image from "gatsby-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -46,6 +47,15 @@ class BlogPostTemplate extends React.Component {
             </div>
           </div>
         </section>
+
+        <div className="container">
+          {post.frontmatter.cover && (
+            <Image
+              className="image "
+              fluid={post.frontmatter.cover.childImageSharp.fluid}
+            />
+          )}
+        </div>
 
         <section className="section">
           <div className="container">
@@ -123,7 +133,13 @@ export const pageQuery = graphql`
         title
         subtitle
         description
-        categories
+        cover {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
         tags
       }
     }

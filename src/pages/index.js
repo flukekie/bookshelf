@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import Image from "gatsby-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -22,6 +23,16 @@ class Homepage extends React.Component {
                     const title = node.frontmatter.title || node.fields.slug
                     return (
                       <div className="card" key={node.fields.slug}>
+                        <div className="card-image">
+                          {node.frontmatter.cover && (
+                              <Image className="image"
+                                fluid={
+                                  node.frontmatter.cover.childImageSharp.fluid
+                                }
+                              />
+                          )}
+                        </div>
+
                         <div className="card-content">
                           <h1 className="title is-4">
                             <Link to={node.fields.slug}>{title}</Link>
@@ -44,7 +55,6 @@ class Homepage extends React.Component {
             </div>
           </div>
         </section>
-
       </Layout>
     )
   }
@@ -59,7 +69,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC}) {
       edges {
         node {
           excerpt
@@ -70,6 +80,14 @@ export const pageQuery = graphql`
             date(formatString: "LL")
             title
             description
+            cover {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+            tags
           }
         }
       }
