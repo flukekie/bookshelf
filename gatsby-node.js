@@ -7,7 +7,6 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const blogPostTemplate = path.resolve(`./src/templates/blogPost.js`)
   const tagPageTemplate = path.resolve(`./src/templates/tagPage.js`)
-  const categoryPageTemplate = path.resolve(`./src/templates/categoryPage.js`)
 
   const result = await graphql(
     `
@@ -24,7 +23,6 @@ exports.createPages = async ({ graphql, actions }) => {
               frontmatter {
                 title
                 tags
-                categories
               }
             }
           }
@@ -78,26 +76,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  // same thing but categories
-  let categories = []
-
-  // Iterate through each post, putting all found cats into `cats`
-  _.each(posts, edge => {
-    if (_.get(edge, "node.frontmatter.categories")) {
-      categories = categories.concat(edge.node.frontmatter.categories)
-    }
-  })
-  // Eliminate duplicate cats
-  categories = _.uniq(categories)
-
-  // Make cat pages
-  categories.forEach(cat => {
-    createPage({
-      path: `/category/${_.kebabCase(cat)}/`,
-      component: categoryPageTemplate,
-      context: { cat },
-    })
-  })
+  
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

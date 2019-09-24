@@ -2,9 +2,7 @@
 date: 2017-11-28T05:31:11.134Z
 title: "ทำความรู้จักกับ DigitalOcean"
 subtitle: "ทำความรู้จักกับ DigitalOcean"
-description: ""
-categories:
-  - what is?
+description: "DigitalOcean คือผู้ให้บริการ Cloud server ระดับต้นๆ โดยถูกออกแบบมาเพื่อให้ Developer ใช้งานได้อย่างสะดวกและง่ายดาย ด้วยจุดเด่นในด้านความเร็วในการตั้งเซิร์ฟเวอร์เพียงไม่กี่อึดใจและราคาที่เหมาจ่ายเป็นรายชั่วโมง"
 tags:
   - what is?
   - digitalocean
