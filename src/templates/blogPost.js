@@ -135,7 +135,7 @@ export const pageQuery = graphql`
         description
         cover {
           childImageSharp {
-            fluid {
+            fluid (quality:100) {
               ...GatsbyImageSharpFluid
             }
           }

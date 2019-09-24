@@ -16,45 +16,49 @@ class Homepage extends React.Component {
 
         <section className="section">
           <div className="container">
-            <div className="columns">
-              <div className="column is-8-desktop is-offset-2-desktop">
-                <div className="content">
-                  {posts.map(({ node }) => {
-                    const title = node.frontmatter.title || node.fields.slug
-                    return (
-                      <div className="card" key={node.fields.slug}>
-                        <div className="card-image">
-                          {node.frontmatter.cover && (
-                              <Image className="image"
-                                fluid={
-                                  node.frontmatter.cover.childImageSharp.fluid
-                                }
-                              />
-                          )}
-                        </div>
-
-                        <div className="card-content">
-                          <h1 className="title is-4">
-                            <Link to={node.fields.slug}>{title}</Link>
-                          </h1>
-                          <h2 className="subtitle is-6">
-                            {node.frontmatter.date}
-                          </h2>
-                          <p
-                            dangerouslySetInnerHTML={{
-                              __html:
-                                node.frontmatter.description || node.excerpt,
-                            }}
-                          ></p>
-                        </div>
+            <div className="tile is-ancestor">
+              <div className="tile is-parent ">
+                {posts.map(({ node }) => {
+                  const title = node.frontmatter.title || node.fields.slug
+                  return (
+                  <div className="tile is-child is-4">
+                    <div className="card" key={node.fields.slug}>
+                      <div className="card-image">
+                        {node.frontmatter.cover && (
+                          <Image
+                            className="image"
+                            fluid={node.frontmatter.cover.childImageSharp.sizes}
+                          />
+                        )}
                       </div>
-                    )
-                  })}
-                </div>
+
+                      <div className="card-content">
+                        <h1 className="title is-4">
+                          <Link to={node.fields.slug}>{title}</Link>
+                        </h1>
+                        <h2 className="subtitle is-6">
+                          {node.frontmatter.date}
+                        </h2>
+                        <p
+                          dangerouslySetInnerHTML={{
+                            __html:
+                              node.frontmatter.description || node.excerpt,
+                          }}
+                        ></p>
+                      </div>
+                    </div>
+                  </div>
+                    
+                  )
+                })}
+
+                
               </div>
             </div>
           </div>
         </section>
+
+
       </Layout>
     )
   }
@@ -69,7 +73,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC}) {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
           excerpt
@@ -82,8 +86,8 @@ export const pageQuery = graphql`
             description
             cover {
               childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid
+                sizes(maxHeight: 480) {
+                  ...GatsbyImageSharpSizes
                 }
               }
             }
