@@ -13,16 +13,14 @@ class Homepage extends React.Component {
     return (
       <Layout>
         <SEO title="Homepage" />
-
         <section className="section">
           <div className="container">
-            <div className="tile is-ancestor">
-              <div className="tile is-parent ">
-                {posts.map(({ node }) => {
-                  const title = node.frontmatter.title || node.fields.slug
-                  return (
-                  <div className="tile is-child is-4">
-                    <div className="card" key={node.fields.slug}>
+            <div className="columns is-multiline">
+              {posts.map(({ node }) => {  
+                const title = node.frontmatter.title || node.fields.slug
+                return (
+                  <div className="column is-full-mobile is-half-tablet is-one-third-desktop" key={node.fields.slug}>
+                    <div className="card">
                       <div className="card-image">
                         {node.frontmatter.cover && (
                           <Image
@@ -31,7 +29,6 @@ class Homepage extends React.Component {
                           />
                         )}
                       </div>
-
                       <div className="card-content">
                         <h1 className="title is-4">
                           <Link to={node.fields.slug}>{title}</Link>
@@ -48,17 +45,11 @@ class Homepage extends React.Component {
                       </div>
                     </div>
                   </div>
-                    
-                  )
-                })}
-
-                
-              </div>
+                )
+              })}
             </div>
           </div>
         </section>
-
-
       </Layout>
     )
   }
