@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "flukekie.net",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "A very simple blog powered by Gatsby and Markdown",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Flukekie",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/flukekie/flukekie.net/issues"
   },
   "dependencies": {
     "bulma": "^0.7.5",
@@ -37,7 +37,7 @@
     "node-sass": "^4.12.0",
     "prettier": "^1.18.2"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://github.com/flukekie/flukekie.net#readme",
   "keywords": [
     "gatsby"
   ],
@@ -45,7 +45,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/flukekie/flukekie.net.git"
   },
   "scripts": {
     "build": "gatsby build",
