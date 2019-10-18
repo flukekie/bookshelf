@@ -1,9 +1,8 @@
 ---
 date: 2019-02-04T04:23:38.277Z
 title: "Chatbot คืออะไร"
-subtitle: "Chatbot คืออะไร"
 description: "ในยุคสมัยที่สมาร์ทโฟนของหลายๆคนเต็มไปด้วยแอพแชทต่างๆมากมาย มันต้องมีบ้างแหละที่เราบังเอิญกดไปเจอกับพวก chatbot เข้า จะคนตอบก็ไม่ใช่ ถามอะไรก็ตอบได้เกือบหมด สรุปว่า chatbot มันคืออะไรกันแน่ ทำไมสมัยนี้เห็นใช้กันเยอะจัง"
-cover: "chatbot-blog-cover.jpg"
+cover: "chatbot-blog-cover.png"
 tags:
   - what is?
   - chatbots

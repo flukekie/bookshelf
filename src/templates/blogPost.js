@@ -51,7 +51,7 @@ class BlogPostTemplate extends React.Component {
         <div className="container">
           {post.frontmatter.cover && (
             <Image
-              className="image "
+              className="image"
               fluid={post.frontmatter.cover.childImageSharp.fluid}
             />
           )}
@@ -131,7 +131,6 @@ export const pageQuery = graphql`
       frontmatter {
         date(formatString: "LL")
         title
-        subtitle
         description
         cover {
           childImageSharp {
