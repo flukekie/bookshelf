@@ -36,86 +36,64 @@ class BlogPostTemplate extends React.Component {
           <div className="container">
             <div className="columns is-centered">
               <div className="column is-8-desktop">
-                {post.frontmatter.cover && (
-                  <Image
-                    className="image"
-                    sizes={post.frontmatter.cover.childImageSharp.sizes}
-                  />
+                <div className="card">
+                  <div className="card-image">
+                    {post.frontmatter.cover && (
+                      <Image
+                        className="image"
+                        sizes={post.frontmatter.cover.childImageSharp.sizes}
+                      />
+                    )}
+                  </div>
+                  <div className="card-content">
+                    <div
+                      className="content"
+                      dangerouslySetInnerHTML={{ __html: post.html }}
+                    ></div>
+                  </div>
+                  <div className="card-footer">
+                    {post.frontmatter.tags ? (
+                      <div className="card-footer-item tags">
+                        {post.frontmatter.tags.map(tag => (
+                          <span className="tag" key={tag + `tag`}>
+                            <Link to={`/tag/${kebabCase(tag)}/`}>{tag}</Link>
+                          </span>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="container">
+            <div className="columns is-centered">
+              <div className="column is-full-mobile is-one-third-desktop">
+                {previous && (
+                  <Link to={previous.fields.slug} rel="prev" className="box">
+                    ← {previous.frontmatter.title}
+                  </Link>
+                )}
+              </div>
+              <div className="column is-full-mobile is-one-third-desktop">
+                {next && (
+                  <Link
+                    to={next.fields.slug}
+                    rel="next"
+                    className="box has-text-right"
+                  >
+                    {next.frontmatter.title} →
+                  </Link>
                 )}
               </div>
             </div>
           </div>
         </section>
 
-        <section className="section">
-          <div className="container">
-            <div className="columns is-centered">
-              <div className="column is-8-desktop">
-                <div
-                  className="content"
-                  dangerouslySetInnerHTML={{ __html: post.html }}
-                ></div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="section is-paddingless">
-          <div className="container">
-            <div className="columns is-centered">
-              <div className="column is-8-desktop">
-                {post.frontmatter.tags ? (
-                  <div className="tags">
-                    {post.frontmatter.tags.map(tag => (
-                      <span className="tag" key={tag + `tag`}>
-                        <Link to={`/tag/${kebabCase(tag)}/`}>{tag}</Link>
-                      </span>
-                    ))}
-                  </div>
-                ) : null}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="section">
-          <div className="container">
-            <div className="columns is-centered">
-              <div className="column is-8-desktop">
-                <nav className="level">
-                  {/* Left side */}
-                  <div className="level-left">
-                    <div className="level-item">
-                      {previous && (
-                        <Link
-                          to={previous.fields.slug}
-                          rel="prev"
-                          className="button is-fullwidth"
-                        >
-                          ← {previous.frontmatter.title}
-                        </Link>
-                      )}
-                    </div>
-                  </div>
-                  {/* Right side */}
-                  <div className="level-right">
-                    <div className="level-item">
-                      {next && (
-                        <Link
-                          to={next.fields.slug}
-                          rel="next"
-                          className="button is-fullwidth"
-                        >
-                          {next.frontmatter.title} →
-                        </Link>
-                      )}
-                    </div>
-                  </div>
-                </nav>
-              </div>
-            </div>
-          </div>
-        </section>
+        
       </Layout>
     )
   }
@@ -144,7 +122,7 @@ export const pageQuery = graphql`
         tags
         cover {
           childImageSharp {
-            sizes(maxWidth: 960, quality: 100, toFormat:WEBP) {
+            sizes(maxWidth: 960, quality: 100, toFormat: WEBP) {
               ...GatsbyImageSharpSizes
             }
           }
