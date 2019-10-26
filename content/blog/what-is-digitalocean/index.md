@@ -1,5 +1,7 @@
 ---
 title: ทำความรู้จักกับ DigitalOcean
+subtitle: >
+  DigitalOcean คืออะไร ใช้ทำอะไรได้บ้าง ทำไมถึงนิยมใช้กันทั่วโลก
 description: >
   DigitalOcean คืออะไร ใช้ทำอะไรได้บ้าง ทำไมถึงนิยมใช้กันทั่วโลก
 

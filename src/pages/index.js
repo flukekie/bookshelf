@@ -17,7 +17,6 @@ class Homepage extends React.Component {
           <div className="container">
             <div className="columns is-multiline">
               {posts.map(({ node }) => {  
-                const title = node.frontmatter.title || node.fields.slug
                 return (
                   <div className="column is-full-mobile is-half-tablet is-one-third-desktop" key={node.fields.slug}>
                     <div className="card">
@@ -31,7 +30,7 @@ class Homepage extends React.Component {
                       </div>
                       <div className="card-content">
                         <h1 className="title is-4">
-                          <Link to={node.fields.slug}>{title}</Link>
+                          <Link to={node.fields.slug}>{node.frontmatter.title || node.fields.slug}</Link>
                         </h1>
                         <h2 className="subtitle is-6">
                           {node.frontmatter.date}
@@ -39,7 +38,7 @@ class Homepage extends React.Component {
                         <p
                           dangerouslySetInnerHTML={{
                             __html:
-                              node.frontmatter.description || node.excerpt,
+                            node.frontmatter.subtitle || node.frontmatter.description || node.excerpt,
                           }}
                         ></p>
                       </div>
@@ -74,6 +73,7 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "LL")
             title
+            subtitle
             description
             tags
             cover {
