@@ -24,7 +24,7 @@ class Homepage extends React.Component {
                         {node.frontmatter.cover && (
                           <Image
                             className="image"
-                            fluid={node.frontmatter.cover.childImageSharp.sizes}
+                            sizes={node.frontmatter.cover.childImageSharp.sizes}
                           />
                         )}
                       </div>
@@ -78,7 +78,7 @@ export const pageQuery = graphql`
             tags
             cover {
               childImageSharp {
-                sizes(maxHeight: 480) {
+                sizes(maxHeight: 360, quality:90, toFormat:WEBP) {
                   ...GatsbyImageSharpSizes
                 }
               }

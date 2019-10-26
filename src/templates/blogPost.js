@@ -144,7 +144,7 @@ export const pageQuery = graphql`
         tags
         cover {
           childImageSharp {
-            sizes(maxWidth: 960, quality: 100) {
+            sizes(maxWidth: 960, quality: 100, toFormat:WEBP) {
               ...GatsbyImageSharpSizes
             }
           }
