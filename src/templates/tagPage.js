@@ -1,6 +1,7 @@
 import React from "react"
-
 import { Link, graphql } from "gatsby"
+import Image from "gatsby-image"
+
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -21,6 +22,9 @@ const Tags = ({ pageContext, data }) => {
             <div className="columns">
               <div className="column">
                 <h1 className="title is-2">{tagHeader}</h1>
+                <button className="button">
+                  <Link to="/tags">All tags</Link>
+                </button>
               </div>
             </div>
           </div>
@@ -28,21 +32,24 @@ const Tags = ({ pageContext, data }) => {
       </section>
 
       <section className="section">
-        <div className="container">
-          <div className="columns">
-            <div className="column is-8-desktop is-offset-2-desktop">
-              <div className="content">
-                <button className="button">
-                  <Link to="/tags">All tags</Link>
-                </button>
-                {posts.map(({ node }) => {
-                  return (
-                    <div className="card" key={node.fields.slug}>
+          <div className="container">
+            <div className="columns is-multiline">
+              {posts.map(({ node }) => {  
+                const title = node.frontmatter.title || node.fields.slug
+                return (
+                  <div className="column is-full-mobile is-half-tablet is-one-third-desktop" key={node.fields.slug}>
+                    <div className="card">
+                      <div className="card-image">
+                        {node.frontmatter.cover && (
+                          <Image
+                            className="image"
+                            fluid={node.frontmatter.cover.childImageSharp.sizes}
+                          />
+                        )}
+                      </div>
                       <div className="card-content">
                         <h1 className="title is-4">
-                          <Link to={node.fields.slug}>
-                            {node.frontmatter.title}
-                          </Link>
+                          <Link to={node.fields.slug}>{title}</Link>
                         </h1>
                         <h2 className="subtitle is-6">
                           {node.frontmatter.date}
@@ -55,13 +62,12 @@ const Tags = ({ pageContext, data }) => {
                         ></p>
                       </div>
                     </div>
-                  )
-                })}
-              </div>
+                  </div>
+                )
+              })}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
     </Layout>
   )
@@ -87,6 +93,14 @@ export const pageQuery = graphql`
             date(formatString: "LL")
             title
             description
+            tags
+            cover {
+              childImageSharp {
+                sizes(maxHeight: 480) {
+                  ...GatsbyImageSharpSizes
+                }
+              }
+            }
           }
         }
       }

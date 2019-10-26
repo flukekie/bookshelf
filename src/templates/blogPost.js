@@ -59,8 +59,8 @@ class BlogPostTemplate extends React.Component {
 
         <section className="section">
           <div className="container">
-            <div className="columns">
-              <div className="column is-8-desktop is-offset-2-desktop">
+            <div className="columns is-centered">
+              <div className="column is-8-desktop">
                 <div
                   className="content"
                   dangerouslySetInnerHTML={{ __html: post.html }}
@@ -72,8 +72,8 @@ class BlogPostTemplate extends React.Component {
 
         <section className="section">
           <div className="container">
-            <div className="columns">
-              <div className="column is-8-desktop is-offset-2-desktop">
+            <div className="columns is-centered">
+              <div className="column is-8-desktop">
                 <nav className="level">
                   {/* Left side */}
                   <div className="level-left">

@@ -75,6 +75,7 @@ export const pageQuery = graphql`
             date(formatString: "LL")
             title
             description
+            tags
             cover {
               childImageSharp {
                 sizes(maxHeight: 480) {
@@ -82,7 +83,6 @@ export const pageQuery = graphql`
                 }
               }
             }
-            tags
           }
         }
       }

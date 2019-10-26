@@ -6,8 +6,8 @@ class Footer extends React.Component {
       <footer className="footer">
         <div className="container">
           <div className="columns">
-            <div className="column is-6 ">
-              <div className="content is-small">
+            <div className="column is-6">
+              <div className="content is-size-6">
                 <p>
                   &copy; {new Date().getFullYear()} Flukekie, Built with{" "}
                   <a href="https://www.gatsbyjs.org" target="_blank" rel="noopener noreferrer">Gatsby</a> &amp;{" "}
