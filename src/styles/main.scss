@@ -20,6 +20,10 @@ $body-font-size: 1.125em;
 $body-line-height: 1.75;
 $link-hover: $cyan;
 
+$section-padding: 1.5rem 1.5rem;  
+$section-padding-medium: 4.5rem 1.5rem;
+$section-padding-large: 9rem 1.5rem;
+
 // https://www.darraghoriordan.com/2019/01/20/bulma-prismjs-in-gatsby-css-conflicts/
 .token.tag,
 .token.content,

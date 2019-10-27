@@ -32,10 +32,10 @@ class BlogPostTemplate extends React.Component {
           </div>
         </section>
 
-        <section className="section is-paddingless">
+        <section className="section">
           <div className="container">
             <div className="columns is-centered">
-              <div className="column is-8-desktop">
+              <div className="column is-full-mobile is-8-desktop is-paddingless">
                 <div className="card">
                   <div className="card-image">
                     {post.frontmatter.cover && (
@@ -71,15 +71,15 @@ class BlogPostTemplate extends React.Component {
         <section className="section">
           <div className="container">
             <div className="columns is-centered">
-              <div className="column is-full-mobile is-one-third-desktop">
-                {previous && (
-                  <Link to={previous.fields.slug} rel="prev" className="box">
+              {previous && (
+                <div className="column is-full-mobile is-one-third-desktop">
+                  <Link to={previous.fields.slug} rel="prev" className="box has-text-left">
                     ← {previous.frontmatter.title}
                   </Link>
-                )}
-              </div>
-              <div className="column is-full-mobile is-one-third-desktop">
-                {next && (
+                </div>
+              )}
+              {next && (
+                <div className="column is-full-mobile is-one-third-desktop">
                   <Link
                     to={next.fields.slug}
                     rel="next"
@@ -87,13 +87,11 @@ class BlogPostTemplate extends React.Component {
                   >
                     {next.frontmatter.title} →
                   </Link>
-                )}
-              </div>
+                  </div>
+              )}
             </div>
           </div>
         </section>
-
-        
       </Layout>
     )
   }
