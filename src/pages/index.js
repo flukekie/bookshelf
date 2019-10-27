@@ -19,7 +19,7 @@ class Homepage extends React.Component {
               {posts.map(({ node }) => {  
                 return (
                   <div className="column is-full-mobile is-half-tablet is-one-third-desktop" key={node.fields.slug}>
-                    <div className="card">
+                    <div className="card" style={{height:'100%'}}>
                       <div className="card-image">
                         {node.frontmatter.cover && (
                           <Image
