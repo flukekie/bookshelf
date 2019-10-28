@@ -73,7 +73,11 @@ class BlogPostTemplate extends React.Component {
             <div className="columns is-centered">
               {previous && (
                 <div className="column is-full-mobile is-one-third-desktop">
-                  <Link to={previous.fields.slug} rel="prev" className="box has-text-left">
+                  <Link
+                    to={previous.fields.slug}
+                    rel="prev"
+                    className="box has-text-left"
+                  >
                     ← {previous.frontmatter.title}
                   </Link>
                 </div>
@@ -87,7 +91,7 @@ class BlogPostTemplate extends React.Component {
                   >
                     {next.frontmatter.title} →
                   </Link>
-                  </div>
+                </div>
               )}
             </div>
           </div>

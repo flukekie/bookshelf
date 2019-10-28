@@ -75,8 +75,6 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { tag },
     })
   })
-
-  
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

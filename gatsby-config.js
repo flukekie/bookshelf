@@ -44,12 +44,12 @@ module.exports = {
             },
           },
           {
-            resolve:`gatsby-remark-autolink-headers`,
-            options:{
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
               offsetY: `-480`,
             },
           },
-          
+
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
         ],
@@ -131,7 +131,6 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sitemap`
-
+    `gatsby-plugin-sitemap`,
   ],
 }

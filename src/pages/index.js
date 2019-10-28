@@ -16,10 +16,13 @@ class Homepage extends React.Component {
         <section className="section">
           <div className="container">
             <div className="columns is-multiline">
-              {posts.map(({ node }) => {  
+              {posts.map(({ node }) => {
                 return (
-                  <div className="column is-full-mobile is-half-tablet is-one-third-desktop" key={node.fields.slug}>
-                    <div className="card" style={{height:'100%'}}>
+                  <div
+                    className="column is-full-mobile is-half-tablet is-one-third-desktop"
+                    key={node.fields.slug}
+                  >
+                    <div className="card" style={{ height: "100%" }}>
                       <div className="card-image">
                         {node.frontmatter.cover && (
                           <Image
@@ -30,7 +33,9 @@ class Homepage extends React.Component {
                       </div>
                       <div className="card-content">
                         <h1 className="title is-4">
-                          <Link to={node.fields.slug}>{node.frontmatter.title || node.fields.slug}</Link>
+                          <Link to={node.fields.slug}>
+                            {node.frontmatter.title || node.fields.slug}
+                          </Link>
                         </h1>
                         <h2 className="subtitle is-6">
                           {node.frontmatter.date}
@@ -38,7 +43,9 @@ class Homepage extends React.Component {
                         <p
                           dangerouslySetInnerHTML={{
                             __html:
-                            node.frontmatter.subtitle || node.frontmatter.description || node.excerpt,
+                              node.frontmatter.subtitle ||
+                              node.frontmatter.description ||
+                              node.excerpt,
                           }}
                         ></p>
                       </div>
@@ -78,7 +85,7 @@ export const pageQuery = graphql`
             tags
             cover {
               childImageSharp {
-                sizes(maxHeight: 360, quality:90, toFormat:WEBP) {
+                sizes(maxHeight: 360, quality: 90, toFormat: WEBP) {
                   ...GatsbyImageSharpSizes
                 }
               }

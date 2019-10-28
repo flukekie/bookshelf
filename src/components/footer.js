@@ -10,16 +10,44 @@ class Footer extends React.Component {
               <div className="content is-size-6">
                 <p>
                   &copy; {new Date().getFullYear()} Flukekie, Built with{" "}
-                  <a href="https://www.gatsbyjs.org" target="_blank" rel="noopener noreferrer">Gatsby</a> &amp;{" "}
-                  <a href="https://bulma.io/" target="_blank" rel="noopener noreferrer">Bulma</a>
+                  <a
+                    href="https://www.gatsbyjs.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Gatsby
+                  </a>{" "}
+                  &amp;{" "}
+                  <a
+                    href="https://bulma.io/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Bulma
+                  </a>
                   <br />
-                  <a href="https://github.com/flukekie/flukekie.net" target="_blank" rel="noopener noreferrer">Source code</a> licensed{" "}
-                  <a href="http://opensource.org/licenses/mit-license.php" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="https://github.com/flukekie/flukekie.net"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Source code
+                  </a>{" "}
+                  licensed{" "}
+                  <a
+                    href="http://opensource.org/licenses/mit-license.php"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     MIT
                   </a>
                   <br />
                   Website content licensed{" "}
-                  <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     CC BY-NC-SA 4.0
                   </a>
                 </p>

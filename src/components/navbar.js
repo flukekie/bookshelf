@@ -13,9 +13,9 @@ const Navbar = () => {
         </div>
         <div class="navbar-menu">
           <div class="navbar-end">
-          <Link to={`/about`} className="navbar-item">About
-          </Link>
-
+            <Link to={`/about`} className="navbar-item">
+              About
+            </Link>
           </div>
         </div>
       </div>
