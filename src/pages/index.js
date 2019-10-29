@@ -22,34 +22,38 @@ class Homepage extends React.Component {
                     className="column is-full-mobile is-half-tablet is-one-third-desktop"
                     key={node.fields.slug}
                   >
-                    <div className="card" style={{ height: "100%" }}>
-                      <div className="card-image">
-                        {node.frontmatter.cover && (
-                          <Image
-                            className="image"
-                            sizes={node.frontmatter.cover.childImageSharp.sizes}
-                          />
-                        )}
+                    <Link to={node.fields.slug}>
+                      <div className="card" style={{ height: "100%" }}>
+                        <div className="card-image">
+                          {node.frontmatter.cover && (
+                            <Image
+                              className="image"
+                              sizes={
+                                node.frontmatter.cover.childImageSharp.sizes
+                              }
+                            />
+                          )}
+                        </div>
+                        <div className="card-content">
+                          <h1 className="title is-4">
+                            <Link to={node.fields.slug}>
+                              {node.frontmatter.title || node.fields.slug}
+                            </Link>
+                          </h1>
+                          <h2 className="subtitle is-6">
+                            {node.frontmatter.date}
+                          </h2>
+                          <p
+                            dangerouslySetInnerHTML={{
+                              __html:
+                                node.frontmatter.subtitle ||
+                                node.frontmatter.description ||
+                                node.excerpt,
+                            }}
+                          ></p>
+                        </div>
                       </div>
-                      <div className="card-content">
-                        <h1 className="title is-4">
-                          <Link to={node.fields.slug}>
-                            {node.frontmatter.title || node.fields.slug}
-                          </Link>
-                        </h1>
-                        <h2 className="subtitle is-6">
-                          {node.frontmatter.date}
-                        </h2>
-                        <p
-                          dangerouslySetInnerHTML={{
-                            __html:
-                              node.frontmatter.subtitle ||
-                              node.frontmatter.description ||
-                              node.excerpt,
-                          }}
-                        ></p>
-                      </div>
-                    </div>
+                    </Link>
                   </div>
                 )
               })}
