@@ -19,7 +19,7 @@ $footer-background-color: $white-ter;
 $body-background-color: $white-bis;
 $body-font-size: 1.125em;
 $body-line-height: 1.75;
-$link-hover: $cyan; 
+$link-hover: $cyan;
 
 $section-padding: 1.5rem 1.5rem;
 $section-padding-medium: 4.5rem 1.5rem;
@@ -45,20 +45,19 @@ $section-padding-large: 9rem 1.5rem;
 @import "~bulma";
 
 .footer {
-	a {
-		color: findDarkColor($link);  
-		&:hover {
-			color: $link-hover;
-		}
-	}
+  a {
+    color: findDarkColor($link);
+    &:hover {
+      color: $link-hover;
+    }
+  } 
 }
 
 .tag {
   a {
-		color: findDarkColor($link);  
-		&:hover {
-			color: $link-hover;
-		}
-	}
+    color: findDarkColor($link);
+    &:hover {
+      color: $link-hover;
+    }
+  }
 }
-  
