@@ -21,14 +21,10 @@ class BlogPostTemplate extends React.Component {
         <section className="hero is-primary is-bold">
           <div className="hero-body">
             <div className="container">
-              <div className="columns">
-                <div className="column">
-                  <h1 className="title is-2">{post.frontmatter.title}</h1>
-                  <h2 className="subtitle is-4">{post.frontmatter.subtitle}</h2>
-                  <p className="subtitle is-6">{post.frontmatter.date}</p>
-                </div>
-              </div>
-            </div>
+              <h1 className="title is-3">{post.frontmatter.title}</h1>
+              {post.frontmatter.subtitle &&(<h2 className="subtitle is-4">{post.frontmatter.subtitle}</h2>)}
+              <p className="subtitle is-6">{post.frontmatter.date}</p>
+            </div>  
           </div>
         </section>
 
