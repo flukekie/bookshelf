@@ -16,15 +16,26 @@ class BlogPostTemplate extends React.Component {
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
+          pathname={this.props.location.pathname}
+          image={
+            post.frontmatter.cover
+              ? post.frontmatter.cover.childImageSharp.fluid
+              : null
+          }
+          isArticle={true}
         />
 
         <section className="hero is-primary is-bold">
           <div className="hero-body">
             <div className="container">
               <h1 className="title is-3">{post.frontmatter.title}</h1>
-              {post.frontmatter.subtitle &&(<h2 className="subtitle is-4">{post.frontmatter.subtitle}</h2>)}
+              {post.frontmatter.description && (
+                <h2 className="subtitle is-4">
+                  {post.frontmatter.description}
+                </h2>
+              )}
               <p className="subtitle is-6">{post.frontmatter.date}</p>
-            </div>  
+            </div>
           </div>
         </section>
 
@@ -37,7 +48,7 @@ class BlogPostTemplate extends React.Component {
                     {post.frontmatter.cover && (
                       <Image
                         className="image"
-                        sizes={post.frontmatter.cover.childImageSharp.sizes}
+                        sizes={post.frontmatter.cover.childImageSharp.fluid}
                       />
                     )}
                   </div>
@@ -48,7 +59,7 @@ class BlogPostTemplate extends React.Component {
                     ></div>
                   </div>
                   <div className="card-footer">
-                    {post.frontmatter.tags ? (
+                    {post.frontmatter.tags && (
                       <div className="card-footer-item tags">
                         {post.frontmatter.tags.map(tag => (
                           <span className="tag" key={tag + `tag`}>
@@ -56,7 +67,7 @@ class BlogPostTemplate extends React.Component {
                           </span>
                         ))}
                       </div>
-                    ) : null}
+                    )}
                   </div>
                 </div>
               </div>
@@ -104,7 +115,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-        author
+        description
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -115,13 +126,12 @@ export const pageQuery = graphql`
       frontmatter {
         date(formatString: "LL")
         title
-        subtitle
         description
         tags
         cover {
           childImageSharp {
-            sizes(maxWidth: 960, quality: 100, toFormat: WEBP) {
-              ...GatsbyImageSharpSizes
+            fluid(maxWidth: 960, quality: 100, toFormat: WEBP) {
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }

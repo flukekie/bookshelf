@@ -1,6 +1,5 @@
 ---
 title: Chatbot คืออะไร
-subtitle: ~
 description: >
   สมัยนี้เห็น Chatbot เต็มไปหมด แล้ว Chatbot คืออะไรล่ะ?
 

@@ -29,7 +29,7 @@ class Homepage extends React.Component {
                             <Image
                               className="image"
                               sizes={
-                                node.frontmatter.cover.childImageSharp.sizes
+                                node.frontmatter.cover.childImageSharp.fluid
                               }
                             />
                           )}
@@ -84,13 +84,12 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "LL")
             title
-            subtitle
             description
             tags
             cover {
               childImageSharp {
-                sizes(maxHeight: 360, quality: 90, toFormat: WEBP) {
-                  ...GatsbyImageSharpSizes
+                fluid(maxHeight: 360, quality: 80, toFormat: WEBP) {
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }
