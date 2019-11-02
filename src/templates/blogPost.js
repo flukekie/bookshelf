@@ -130,8 +130,10 @@ export const pageQuery = graphql`
         tags
         cover {
           childImageSharp {
-            fluid(maxWidth: 960, quality: 100, toFormat: WEBP) {
+            fluid(maxWidth: 960, quality: 100) {
               ...GatsbyImageSharpFluid_withWebp
+              presentationWidth
+              presentationHeight
             }
           }
         }
