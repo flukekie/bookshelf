@@ -1,11 +1,16 @@
 module.exports = {
   siteMetadata: {
     title: `Flukekie`,
-    author: `Flukekie`,
     description: `That corner of the internet`,
     siteUrl: `https://flukekie.net/`,
-    social: {
-      twitter: `_flukekie`,
+    author: {
+      name: `Flukekie`,
+      description: ``,
+      social: {
+        facebook: `flukekie`,
+        twitter: `@_flukekie`,
+        github: `flukekie`,
+      },
     },
   },
   plugins: [
@@ -34,7 +39,7 @@ module.exports = {
               backgroundColor: `transparent`,
               withWebp: true,
               showCaptions: true,
-              quality: 90,
+              quality: 80,
             },
           },
           {

@@ -47,7 +47,7 @@ const Tags = ({ pageContext, data }) => {
                         {node.frontmatter.cover && (
                           <Image
                             className="image"
-                            fluid={node.frontmatter.cover.childImageSharp.sizes}
+                            fluid={node.frontmatter.cover.childImageSharp.fluid}
                           />
                         )}
                       </div>
@@ -100,8 +100,8 @@ export const pageQuery = graphql`
             tags
             cover {
               childImageSharp {
-                sizes(maxHeight: 480) {
-                  ...GatsbyImageSharpSizes
+                fluid(maxHeight: 360, quality: 80, toFormat: WEBP) {
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }
