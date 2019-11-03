@@ -3,6 +3,7 @@ module.exports = {
     title: `Flukekie`,
     description: `That corner of the internet`,
     siteUrl: `https://flukekie.net/`,
+    cover:  `cover.png`,
     author: {
       name: `Flukekie`,
       description: ``,

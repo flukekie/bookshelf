@@ -48,7 +48,7 @@ class BlogPostTemplate extends React.Component {
                     {post.frontmatter.cover && (
                       <Image
                         className="image"
-                        sizes={post.frontmatter.cover.childImageSharp.fluid}
+                        fluid={post.frontmatter.cover.childImageSharp.fluid}
                       />
                     )}
                   </div>
