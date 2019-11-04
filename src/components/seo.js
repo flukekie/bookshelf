@@ -37,7 +37,9 @@ function SEO({ lang, meta, title, description, image, pathname, isArticle }) {
 
   const metaDescription = description || site.siteMetadata.description
   const metaImage =
-    image && image.src ? `${site.siteMetadata.siteUrl}${image.src}` : `${site.siteMetadata.siteUrl}/${site.siteMetadata.cover}`
+    image && image.src
+      ? `${site.siteMetadata.siteUrl}${image.src}`
+      : `${site.siteMetadata.siteUrl}/${site.siteMetadata.cover}`
   const metaUrl = `${site.siteMetadata.siteUrl}${pathname || `/`}`
 
   return (
@@ -51,6 +53,10 @@ function SEO({ lang, meta, title, description, image, pathname, isArticle }) {
         {
           name: `description`,
           content: metaDescription,
+        },
+        {
+          name: `twitter:creator`,
+          content: site.siteMetadata.author.social.twitter,
         },
         {
           property: `og:site_name`,
@@ -71,8 +77,7 @@ function SEO({ lang, meta, title, description, image, pathname, isArticle }) {
         {
           property: `og:url`,
           content: metaUrl,
-        }
-        
+        },
       ]
         .concat(
           metaImage
@@ -105,12 +110,7 @@ function SEO({ lang, meta, title, description, image, pathname, isArticle }) {
                 },
               ]
         )
-        .concat([{
-          name: `twitter:creator`,
-          content: site.siteMetadata.author.social.twitter,
-        },])
-        .concat(meta)
-      }
+        .concat(meta)}
     />
   )
 }
