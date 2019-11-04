@@ -2,7 +2,7 @@
   "name": "flukekie.net",
   "private": true,
   "description": "A very simple blog powered by Gatsby and Markdown",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Flukekie",
   "bugs": {
     "url": "https://github.com/flukekie/flukekie.net/issues"
@@ -50,9 +50,8 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop -H 0.0.0.0 -o",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
+    "clean": "gatsby clean"
   }
 }
