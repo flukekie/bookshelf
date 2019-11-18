@@ -87,18 +87,6 @@ function SEO({ lang, meta, title, description, image, pathname, isArticle }) {
                   content: metaImage,
                 },
                 {
-                  property: `og:image:alt`,
-                  content: title,
-                },
-                {
-                  property: "og:image:width",
-                  content: image.presentationWidth,
-                },
-                {
-                  property: "og:image:height",
-                  content: image.presentationHeight,
-                },
-                {
                   name: `twitter:card`,
                   content: `summary_large_image`,
                 },
