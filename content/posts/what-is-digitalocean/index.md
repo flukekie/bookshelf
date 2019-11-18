@@ -6,7 +6,10 @@ description: >
 created: 2017-11-29T17:36:00Z
 updated: 2017-11-29T17:36:00Z
 cover: digitalocean-blog-cover.png
-tags: [What is?, DigitalOcean, Cloud computing, Cloud services]
+tags: 
+  - What is?
+  - DigitalOcean
+  - Cloud computing
 ---
 
 DigitalOcean คือผู้ให้บริการ Cloud server ระดับต้นๆ โดยถูกออกแบบมาเพื่อให้ Developer ใช้งานได้อย่างสะดวกและง่ายดาย ด้วยจุดเด่นในด้านความเร็วในการตั้งเซิร์ฟเวอร์เพียงไม่กี่อึดใจและราคาที่เหมาจ่ายเป็นรายชั่วโมง

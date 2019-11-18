@@ -6,7 +6,10 @@ description: >
 created: 2018-07-31T01:16:00Z
 updated: 2018-07-31T01:16:00Z
 cover: bitrefill-blog-cover.png
-tags: [How to, Gaming, Steam, Cryptocurrency, Bitcoin, Litecoin, Ethereum]
+tags: 
+  - How to
+  - Gaming
+  - Cryptocurrency
 ---
 
 ก่อนอื่นต้องบอกก่อนเลยว่าทาง Steam เคยรับ Bitcoin เอง แต่ตอนนี้ได้ยกเลิกไปแล้วเนื่องจากความผันผวนของราคาและเรื่อง Transaction Fee ที่เด้งสูงจนทำให้เกิดความปั่นป่วนในการซื้อเกมขึ้นจนเป็นเหตุให้ยกเลิกไป
