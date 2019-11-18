@@ -2,8 +2,9 @@
 title: Chatbot คืออะไร
 description: >
   สมัยนี้เห็น Chatbot เต็มไปหมด แล้ว Chatbot คืออะไรล่ะ?
-created: 2019-02-04T03:41:00
-updated: 2019-02-04T03:41:00
+
+created: 2019-02-04T03:41:00Z
+updated: 2019-02-04T03:41:00Z
 cover: chatbot-blog-cover.png
 tags: [What is?, Chatbots]
 ---

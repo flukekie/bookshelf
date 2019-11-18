@@ -8,9 +8,7 @@ args = parser.parse_args()
 
 slug = args.slug
 filename = 'index.md'
-
-time = datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
-
+time = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
 path = slug
 
 try:
