@@ -2,8 +2,8 @@
 title: ซื้อเกมใน Steam ยังไงไม่ใช้เงินซักบาท (ใช้ Bitcoin สิ)
 description: >
   ซื้อเกมใน Steam โดยใช้ Bitcoin อย่างไรที่เรียบง่ายและไม่แพงกว่าการเติมเงินสด
-
-date: 2018-07-31T01:16:00Z
+created: 2018-07-31T01:16:00
+updated: 2018-07-31T01:16:00
 cover: bitrefill-blog-cover.png
 tags: [How to, Gaming, Steam, Cryptocurrency, Bitcoin, Litecoin, Ethereum]
 ---

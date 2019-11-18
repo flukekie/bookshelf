@@ -56,7 +56,7 @@ const Tags = ({ pageContext, data }) => {
                           <Link to={node.fields.slug}>{title}</Link>
                         </h1>
                         <h2 className="subtitle is-6">
-                          {node.frontmatter.date}
+                          {node.frontmatter.created}
                         </h2>
                         <p
                           dangerouslySetInnerHTML={{
@@ -83,7 +83,7 @@ export const pageQuery = graphql`
   query($tag: String) {
     allMarkdownRemark(
       limit: 2000
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { fields: [frontmatter___created], order: DESC }
       filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
       totalCount
@@ -94,7 +94,7 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "LL")
+            created(formatString: "LL")
             title
             description
             tags

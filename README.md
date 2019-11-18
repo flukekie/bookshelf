@@ -15,7 +15,7 @@ The blog posts are very likely contain mostly Thai content. But have English UI 
 Some classic Gatsby/React/Node app initialization
 
 ```shell
-npm i
+yarn install
 gatsby develop
 gatsby build
 ```

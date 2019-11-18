@@ -2,14 +2,14 @@ import os, argparse
 from datetime import datetime
 
 parser = argparse.ArgumentParser()
-parser.add_argument('slug',nargs='?',type=str,default=f"{datetime.now().strftime('%Y%m%d-%H.%M.%S')}", help="The slug of post")
+parser.add_argument('slug',nargs='?',type=str,default=f"{datetime.now().strftime('%Y-%m-%d_%H.%M.%S')}", help="The slug of post, use only these following characters [0-9a-zA-Z-._]")
 args = parser.parse_args()
 
 
 slug = args.slug
 filename = 'index.md'
 
-time = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
+time = datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
 
 path = slug
 
@@ -36,7 +36,7 @@ try:
             f.write(f"updated: {time}\n")
             f.write(f"cover: ~\n")
             f.write(f"tags: ~\n")
-            f.write("---\n")
+            f.write("---\n\n")
             f.write("## Hello world\n")
             f.close()
             print (f"[info] created {filename} at {time}")

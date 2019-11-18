@@ -34,7 +34,14 @@ class BlogPostTemplate extends React.Component {
                   {post.frontmatter.description}
                 </h2>
               )}
-              <p className="subtitle is-6">{post.frontmatter.date}</p>
+              <p className="subtitle is-6">
+                {post.frontmatter.date_created}
+                {post.frontmatter.created !== post.frontmatter.updated && (
+                  <p className="subtitle is-6">
+                    Updated: {post.frontmatter.date_updated}
+                  </p>
+                )}
+              </p>
             </div>
           </div>
         </section>
@@ -124,10 +131,12 @@ export const pageQuery = graphql`
       html
       tableOfContents
       frontmatter {
-        date(formatString: "LL")
         title
         description
-        tags
+        date_created: created(formatString: "LL")
+        date_updated: updated(formatString: "LL")
+        created
+        updated
         cover {
           childImageSharp {
             fluid(maxWidth: 960, quality: 100) {
@@ -137,6 +146,7 @@ export const pageQuery = graphql`
             }
           }
         }
+        tags
       }
     }
   }

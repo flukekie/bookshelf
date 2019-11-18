@@ -41,7 +41,7 @@ class Homepage extends React.Component {
                             </Link>
                           </h1>
                           <h2 className="subtitle is-6">
-                            {node.frontmatter.date}
+                            {node.frontmatter.created}
                           </h2>
                           <p
                             dangerouslySetInnerHTML={{
@@ -74,7 +74,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(sort: { fields: [frontmatter___created], order: DESC }) {
       edges {
         node {
           excerpt
@@ -82,7 +82,7 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "LL")
+            created(formatString: "LL")
             title
             description
             tags

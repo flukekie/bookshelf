@@ -2,8 +2,8 @@
 title: ทำความรู้จักกับ DigitalOcean
 description: >
   DigitalOcean คืออะไร ใช้ทำอะไรได้บ้าง ทำไมถึงนิยมใช้กันทั่วโลก
-
-date: 2017-11-29T17:36:00Z
+created: 2017-11-29T17:36:00
+updated: 2017-11-29T17:36:00
 cover: digitalocean-blog-cover.png
 tags: [What is?, DigitalOcean, Cloud computing, Cloud services]
 ---

@@ -18,8 +18,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
+        path: `${__dirname}/content/posts`,
+        name: `posts`,
       },
     },
     {
@@ -55,7 +55,6 @@ module.exports = {
               offsetY: `-480`,
             },
           },
-
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
         ],
@@ -91,7 +90,7 @@ module.exports = {
               return allMarkdownRemark.edges.map(edge => {
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.excerpt,
-                  date: edge.node.frontmatter.date,
+                  date: edge.node.frontmatter.created,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   custom_elements: [{ "content:encoded": edge.node.html }],
@@ -101,7 +100,7 @@ module.exports = {
             query: `
               {
                 allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___date] },
+                  sort: { order: DESC, fields: [frontmatter___created] },
                 ) {
                   edges {
                     node {
@@ -110,7 +109,7 @@ module.exports = {
                       fields { slug }
                       frontmatter {
                         title
-                        date
+                        created
                       }
                     }
                   }
