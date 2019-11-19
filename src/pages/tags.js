@@ -13,43 +13,28 @@ const TagsPage = ({
 }) => (
   <Layout>
     <SEO title="All Tags" />
-    <section className="hero is-primary is-bold">
-      <div className="hero-body">
-        <div className="container">
-          <div className="columns">
-            <div className="column">
-              <h1 className="title is-2">All Tags</h1>
-            </div>
+    <section>
+      <div className="container mx-auto my-6">
+        <h1 className="text-4xl mb-4">All tags</h1>
+      </div>
+    </section>
+    <section>
+      <div className="container mx-auto my-6">
+        {group.map(tag => (
+          <div className="inline-block mr-2">
+            <Link to={`/tag/${kebabCase(tag.fieldValue)}/`}>
+              <span className="inline-block bg-blue-200 rounded-l px-3 py-1 text-sm font-semibold text-gray-700">
+                {_capitalize(tag.fieldValue)}
+              </span>
+              <span className="inline-block bg-gray-200 rounded-r px-3 py-1 text-sm font-semibold text-gray-700">
+                {tag.totalCount}
+              </span>
+            </Link>
           </div>
-        </div>
+        ))}
       </div>
     </section>
 
-    <section className="section">
-      <div className="container">
-        <div className="columns">
-          <div className="column ">
-            <div className="content">
-              <div className="field is-grouped is-grouped-multiline">
-                {group.map(tag => (
-                  <div className="control">
-                    <div className="tags are-medium has-addons">
-                      <Link
-                        to={`/tag/${kebabCase(tag.fieldValue)}/`}
-                        className="tag is-link"
-                      >
-                        {_capitalize(tag.fieldValue)}
-                      </Link>
-                      <span className="tag">{tag.totalCount}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   </Layout>
 )
 

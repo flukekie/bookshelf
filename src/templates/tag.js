@@ -15,59 +15,52 @@ const Tags = ({ pageContext, data }) => {
   return (
     <Layout>
       <SEO title={`Tag: ${tag}`} />
-
-      <section className="hero is-primary is-bold">
-        <div className="hero-body">
-          <div className="container">
-            <div className="columns">
-              <div className="column">
-                <h1 className="title is-2">{tagHeader}</h1>
-                <button className="button">
-                  <Link to="/tags">All tags</Link>
-                </button>
-              </div>
-            </div>
-          </div>
+      <section>
+        <div className="container mx-auto my-6">
+          <h1 className="text-4xl mb-4">{tagHeader}</h1>
+          <button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+            <Link to="/tags">View all tags</Link>
+          </button>
         </div>
       </section>
 
       <section className="section">
-        <div className="container">
-          <div className="columns is-multiline">
+        <div className="container mx-auto">
+          <div className="flex flex-wrap -mx-0 md:-mx-2">
             {posts.map(({ node }) => {
-              const title = node.frontmatter.title || node.fields.slug
               return (
-                <div
-                  className="column is-full-mobile is-half-tablet is-one-third-desktop"
+                <Link
+                  to={node.fields.slug}
+                  className="w-full md:w-1/2 lg:w-1/3 px-4 md:px-2 pb-4"
                   key={node.fields.slug}
                 >
-                  <Link to={node.fields.slug}>
-                    <div className="card">
-                      <div className="card-image">
-                        {node.frontmatter.cover && (
-                          <Image
-                            className="image"
-                            fluid={node.frontmatter.cover.childImageSharp.fluid}
-                          />
-                        )}
-                      </div>
-                      <div className="card-content">
-                        <h1 className="title is-4">
-                          <Link to={node.fields.slug}>{title}</Link>
-                        </h1>
-                        <h2 className="subtitle is-6">
-                          {node.frontmatter.created}
-                        </h2>
-                        <p
-                          dangerouslySetInnerHTML={{
-                            __html:
-                              node.frontmatter.description || node.excerpt,
-                          }}
-                        ></p>
-                      </div>
+                  <div className="rounded overflow-hidden border border-solid h-full">
+                    {node.frontmatter.cover && (
+                      <Image
+                        className="w-full"
+                        sizes={node.frontmatter.cover.childImageSharp.fluid}
+                      />
+                    )}
+
+                    <div className="p-3 md:p-4">
+                      <h1 className="font-bold text-xl">
+                        <Link to={node.fields.slug}>
+                          {node.frontmatter.title || node.fields.slug}
+                        </Link>
+                      </h1>
+                      <h2 className="text-sm">{node.frontmatter.created}</h2>
+                      <p
+                        className="text-gray-700 text-base mt-2"
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            node.frontmatter.subtitle ||
+                            node.frontmatter.description ||
+                            node.excerpt,
+                        }}
+                      ></p>
                     </div>
-                  </Link>
-                </div>
+                  </div>
+                </Link>
               )
             })}
           </div>

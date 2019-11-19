@@ -25,91 +25,71 @@ class BlogPostTemplate extends React.Component {
           isArticle={true}
         />
 
-        <section className="hero is-primary is-bold">
-          <div className="hero-body">
-            <div className="container">
-              <h1 className="title is-3">{post.frontmatter.title}</h1>
-              {post.frontmatter.description && (
-                <h2 className="subtitle is-4">
-                  {post.frontmatter.description}
-                </h2>
-              )}
-              <p className="subtitle is-6">
-                {post.frontmatter.date_created}
-                {post.frontmatter.created !== post.frontmatter.updated && (
-                  <p className="subtitle is-6">
-                    Updated: {post.frontmatter.date_updated}
-                  </p>
-                )}
-              </p>
-            </div>
-          </div>
-        </section>
+        <div className="container mx-auto max-w-4xl">
+          {post.frontmatter.cover && (
+            <Image
+              className="image"
+              fluid={post.frontmatter.cover.childImageSharp.fluid}
+            />
+          )}
+        </div>
 
-        <section className="section">
-          <div className="container">
-            <div className="columns is-centered">
-              <div className="column is-full-mobile is-8-desktop is-paddingless">
-                <div className="card">
-                  <div className="card-image">
-                    {post.frontmatter.cover && (
-                      <Image
-                        className="image"
-                        fluid={post.frontmatter.cover.childImageSharp.fluid}
-                      />
-                    )}
-                  </div>
-                  <div className="card-content">
-                    <div
-                      className="content"
-                      dangerouslySetInnerHTML={{ __html: post.html }}
-                    ></div>
-                  </div>
-                  <div className="card-footer">
-                    {post.frontmatter.tags && (
-                      <div className="card-footer-item tags">
-                        {post.frontmatter.tags.map(tag => (
-                          <span className="tag" key={tag + `tag`}>
-                            <Link to={`/tag/${kebabCase(tag)}/`}>{tag}</Link>
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div className="container mx-auto max-w-4xl my-6">
+          <div className="pb-8">
+            <h1 className="font-bold text-4xl">{post.frontmatter.title}</h1>
+            {post.frontmatter.description && (
+              <h2 className="text-2xl">{post.frontmatter.description}</h2>
+            )}
+            <p className="text-lg">
+              {post.frontmatter.date_created}
+              {post.frontmatter.created !== post.frontmatter.updated && (
+                <p className="text-lg">
+                  Updated: {post.frontmatter.date_updated}
+                </p>
+              )}
+            </p>
           </div>
-        </section>
 
-        <section className="section">
-          <div className="container">
-            <div className="columns is-centered">
-              {previous && (
-                <div className="column is-full-mobile is-one-third-desktop">
-                  <Link
-                    to={previous.fields.slug}
-                    rel="prev"
-                    className="box has-text-left"
-                  >
-                    ← {previous.frontmatter.title}
-                  </Link>
-                </div>
-              )}
-              {next && (
-                <div className="column is-full-mobile is-one-third-desktop">
-                  <Link
-                    to={next.fields.slug}
-                    rel="next"
-                    className="box has-text-right"
-                  >
-                    {next.frontmatter.title} →
-                  </Link>
-                </div>
-              )}
+          <article
+            className="content"
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          />
+
+        </div>
+        
+        <div className="container mx-auto max-w-4xl my-4">
+          {post.frontmatter.tags && (
+            <div className="tags">
+              {post.frontmatter.tags.map(tag => (
+                <span
+                  className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
+                  key={tag + `tag`}
+                >
+                  <Link to={`/tag/${kebabCase(tag)}/`}>{tag}</Link>
+                </span>
+              ))}
             </div>
+          )}
+        </div>
+
+        <div className="container mx-auto max-w-4xl my-4">
+          <div className="flex flex-wrap justify-center -mx-2">
+            {previous && (
+              <Link to={previous.fields.slug} rel="prev" className="w-1/2 px-2">
+                <div className="text-left rounded overflow-hidden border border-solid p-3">
+                  ← {previous.frontmatter.title}
+                </div>
+              </Link>
+            )}
+            {next && (
+              <Link to={next.fields.slug} rel="next" className="w-1/2 px-2">
+                <div className="text-right rounded overflow-hidden border border-solid p-3">
+                  {next.frontmatter.title} →
+                </div>
+              </Link>
+            )}
           </div>
-        </section>
+        </div>
       </Layout>
     )
   }

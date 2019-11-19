@@ -17,35 +17,19 @@ class PageTemplate extends React.Component {
           isArticle={false}
         />
 
-        <section className="hero is-dark">
-          <div className="hero-body">
-            <div className="container">
-              <h1 className="title is-3">{page.frontmatter.title}</h1>
-              {page.frontmatter.description && (
-                <h2 className="subtitle is-4">
-                  {page.frontmatter.description}
-                </h2>
-              )}
-            </div>
+        <div className="container mx-auto max-w-4xl my-6">
+          <div className="pb-8">
+            <h1 className="font-bold text-4xl">{page.frontmatter.title}</h1>
+            {page.frontmatter.description && (
+              <h2 className="text-2xl">{page.frontmatter.description}</h2>
+            )}
           </div>
-        </section>
 
-        <section className="section">
-          <div className="container">
-            <div className="columns is-centered">
-              <div className="column is-full-mobile is-8-desktop is-paddingless">
-                <div className="card">
-                  <div className="card-content">
-                    <div
-                      className="content"
-                      dangerouslySetInnerHTML={{ __html: page.html }}
-                    ></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+          <article
+            className="content leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: page.html }}
+          />
+        </div>
       </Layout>
     )
   }
