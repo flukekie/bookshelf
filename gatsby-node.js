@@ -6,12 +6,14 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const postTemplate = path.resolve(`./src/templates/post.js`)
+  const pageTemplate = path.resolve(`./src/templates/page.js`)
   const tagTemplate = path.resolve(`./src/templates/tag.js`)
 
   const result = await graphql(
     `
       {
-        allMarkdownRemark(
+        posts: allMarkdownRemark(
+          filter: { fileAbsolutePath: { regex: "/(posts)/.*\\\\.md$/" } }
           sort: { fields: [frontmatter___created], order: DESC }
           limit: 1000
         ) {
@@ -27,6 +29,22 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
+
+        pages: allMarkdownRemark(
+          filter: { fileAbsolutePath: { regex: "/(pages)/.*\\\\.md$/" } }
+        ) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+              }
+            }
+          }
+        }
+
       }
     `
   )
@@ -36,7 +54,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Create blog posts pages.
-  const posts = result.data.allMarkdownRemark.edges
+  const posts = result.data.posts.edges
 
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
@@ -52,6 +70,20 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
+    // Create blog posts pages.
+    const pages = result.data.pages.edges
+
+    pages.forEach((page) => {
+      
+      createPage({
+        path: page.node.fields.slug,
+        component: pageTemplate,
+        context: {
+          slug: page.node.fields.slug,
+        },
+      })
+    })
 
   /* create Tags pages */
   // pulled directly from https://www.gatsbyjs.org/docs/adding-tags-and-categories-to-blog-posts/#add-tags-to-your-markdown-files

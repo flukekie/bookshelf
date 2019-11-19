@@ -74,7 +74,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___created], order: DESC }) {
+    allMarkdownRemark(sort: {order: DESC, fields: frontmatter___created}, filter: {fileAbsolutePath: {regex: "/(posts)/.*\\\\.md$/"}}) {
       edges {
         node {
           excerpt
