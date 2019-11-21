@@ -6,7 +6,8 @@ import Image from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-class BlogPostTemplate extends React.Component {
+
+export default class PostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const { previous, next } = this.props.pageContext
@@ -25,55 +26,47 @@ class BlogPostTemplate extends React.Component {
           isArticle={true}
         />
 
-        <div className="container mx-auto max-w-4xl">
+        <section className="container mx-auto max-w-4xl">
           {post.frontmatter.cover && (
-            <Image
-              className="image"
-              fluid={post.frontmatter.cover.childImageSharp.fluid}
-            />
+            <Image fluid={post.frontmatter.cover.childImageSharp.fluid} />
           )}
-        </div>
 
-        <div className="container mx-auto max-w-4xl my-6">
-          <div className="pb-8">
-            <h1 className="font-bold text-4xl">{post.frontmatter.title}</h1>
-            {post.frontmatter.description && (
-              <h2 className="text-2xl">{post.frontmatter.description}</h2>
-            )}
-            <p className="text-lg">
-              {post.frontmatter.date_created}
-              {post.frontmatter.created !== post.frontmatter.updated && (
-                <p className="text-lg">
-                  Updated: {post.frontmatter.date_updated}
-                </p>
+          <main>
+            <header className="pb-8">
+              <h1 className="font-bold text-4xl">{post.frontmatter.title}</h1>
+              {post.frontmatter.description && (
+                <h2 className="text-2xl">{post.frontmatter.description}</h2>
               )}
-            </p>
-          </div>
+              <p className="text-lg">
+                {post.frontmatter.date_created}
+                {post.frontmatter.created !== post.frontmatter.updated && (
+                  <p className="text-lg">
+                    Updated: {post.frontmatter.date_updated}
+                  </p>
+                )}
+              </p>
+            </header>
+            <article
+              className="content"
+              dangerouslySetInnerHTML={{ __html: post.html }}
+            />
+            <footer className="flex flex-wrap justify-center my-4">
+              {post.frontmatter.tags && (
+                <div className="tags">
+                  {post.frontmatter.tags.map(tag => (
+                    <span
+                      className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
+                      key={tag + `tag`}
+                    >
+                      <Link to={`/tag/${kebabCase(tag)}/`}>{tag}</Link>
+                    </span>
+                  ))}
+                </div>
+              )}
+            </footer>
+          </main>
 
-          <article
-            className="content"
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          />
-
-        </div>
-        
-        <div className="container mx-auto max-w-4xl my-4">
-          {post.frontmatter.tags && (
-            <div className="tags">
-              {post.frontmatter.tags.map(tag => (
-                <span
-                  className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
-                  key={tag + `tag`}
-                >
-                  <Link to={`/tag/${kebabCase(tag)}/`}>{tag}</Link>
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <div className="container mx-auto max-w-4xl my-4">
-          <div className="flex flex-wrap justify-center -mx-2">
+          <nav className="flex flex-wrap justify-center -mx-2 my-4">
             {previous && (
               <Link to={previous.fields.slug} rel="prev" className="w-1/2 px-2">
                 <div className="text-left rounded overflow-hidden border border-solid p-3">
@@ -88,14 +81,13 @@ class BlogPostTemplate extends React.Component {
                 </div>
               </Link>
             )}
-          </div>
-        </div>
+          </nav>
+        </section>
       </Layout>
     )
   }
 }
 
-export default BlogPostTemplate
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {

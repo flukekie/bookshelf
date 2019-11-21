@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import Image from "gatsby-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -17,19 +18,26 @@ class PageTemplate extends React.Component {
           isArticle={false}
         />
 
-        <div className="container mx-auto max-w-4xl my-6">
-          <div className="pb-8">
-            <h1 className="font-bold text-4xl">{page.frontmatter.title}</h1>
-            {page.frontmatter.description && (
-              <h2 className="text-2xl">{page.frontmatter.description}</h2>
-            )}
-          </div>
+        <section className="container mx-auto max-w-4xl">
+          {page.frontmatter.cover && (
+            <Image fluid={page.frontmatter.cover.childImageSharp.fluid} />
+          )}
 
-          <article
-            className="content leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: page.html }}
-          />
-        </div>
+          <main>
+            <header className="pb-8">
+              <h1 className="font-bold text-4xl">{page.frontmatter.title}</h1>
+              {page.frontmatter.description && (
+                <h2 className="text-2xl">{page.frontmatter.description}</h2>
+              )}
+            </header>
+            <article
+              className="content"
+              dangerouslySetInnerHTML={{ __html: page.html }}
+            />
+          </main>
+
+          
+        </section>
       </Layout>
     )
   }
