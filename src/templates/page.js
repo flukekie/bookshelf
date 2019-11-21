@@ -18,7 +18,7 @@ class PageTemplate extends React.Component {
           isArticle={false}
         />
 
-        <section className="container mx-auto max-w-4xl">
+        <section className="container max-w-4xl">
           {page.frontmatter.cover && (
             <Image fluid={page.frontmatter.cover.childImageSharp.fluid} />
           )}

@@ -14,12 +14,12 @@ const TagsPage = ({
   <Layout>
     <SEO title="All Tags" />
     <section>
-      <div className="container mx-auto my-6">
+      <div className="container my-6">
         <h1 className="text-4xl mb-4">All tags</h1>
       </div>
     </section>
     <section>
-      <div className="container mx-auto my-6">
+      <div className="container my-6">
         {group.map(tag => (
           <div className="inline-block mr-2">
             <Link to={`/tag/${kebabCase(tag.fieldValue)}/`}>

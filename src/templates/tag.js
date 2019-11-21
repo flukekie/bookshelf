@@ -15,8 +15,9 @@ const Tags = ({ pageContext, data }) => {
   return (
     <Layout>
       <SEO title={`Tag: ${tag}`} />
+      
       <section>
-        <div className="container mx-auto my-6">
+        <div className="container my-6">
           <h1 className="text-4xl mb-4">{tagHeader}</h1>
           <button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
             <Link to="/tags">View all tags</Link>
@@ -24,7 +25,7 @@ const Tags = ({ pageContext, data }) => {
         </div>
       </section>
 
-      <section className="container mx-auto">
+      <section className="container">
         <div className="flex flex-wrap -mx-0 md:-mx-2">
           {posts.map(({ node }) => {
             return (

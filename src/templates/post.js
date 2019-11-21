@@ -26,7 +26,7 @@ export default class PostTemplate extends React.Component {
           isArticle={true}
         />
 
-        <section className="container mx-auto max-w-4xl">
+        <section className="container max-w-4xl">
           {post.frontmatter.cover && (
             <Image fluid={post.frontmatter.cover.childImageSharp.fluid} />
           )}
@@ -69,7 +69,7 @@ export default class PostTemplate extends React.Component {
           <nav className="flex flex-wrap justify-center -mx-2 my-4">
             {previous && (
               <Link to={previous.fields.slug} rel="prev" className="w-1/2 px-2">
-                <div className="text-left rounded overflow-hidden border border-solid p-3">
+                <div className="text-left rounded overflow-hidden border border-solid hover:border-blue-300 p-3">
                   ← {previous.frontmatter.title}
                 </div>
               </Link>

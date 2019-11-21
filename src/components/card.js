@@ -5,8 +5,11 @@ import Image from "gatsby-image"
 
 export default ({ link, title, subtitle, body, image }) => (
   <div className="rounded overflow-hidden border border-solid h-full hover:border-blue-400">
-    {image && image.fixed && <Image className="w-full" fixed={image.fixed} />}
-    {image && image.fluid && <Image className="w-full" fluid={image.fluid} />}
+    <Link to={link}>
+      {image && image.fixed && <Image className="w-full" fixed={image.fixed} />}
+      {image && image.fluid && <Image className="w-full" fluid={image.fluid} />}
+    </Link>
+
     <div className="p-3 md:p-4">
       <h1 className="font-bold text-xl">
         <Link to={link}>{title}</Link>
