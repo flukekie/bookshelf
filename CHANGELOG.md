@@ -8,18 +8,23 @@ and this project sorta adheres to [Semantic Versioning](https://semver.org/spec/
 
 ---
 
-## [Unreleased]
+## [0.4] - 2019-11-23
+
+Goodbye Bulma, Hello Tailwind!
 
 ### Added
 
-- Simple pages! Suitable for more static contents than normal posts. 
+- Simple pages, for those times where more static contents is needed.
 - A sample page containing standard markdown elements.
 
 ### Changed
 
-- Swapped main CSS framework from Bulma to Tailwind.
+- Swapped main CSS framework from Bulma to Tailwind CSS.
+- Updated footer to use FontAwesome icons instead of huge text mess.
 
 ## [0.3] - 2019-11-19
+
+Easier to create more pages with this handy Python script!
 
 ### Added
 

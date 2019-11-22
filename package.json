@@ -2,7 +2,7 @@
   "name": "flukekie.net",
   "private": true,
   "description": "A very simple blog powered by Gatsby and Markdown",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "author": "Flukekie",
   "bugs": {
     "url": "https://github.com/flukekie/flukekie.net/issues"
