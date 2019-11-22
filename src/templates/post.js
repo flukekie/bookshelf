@@ -6,7 +6,7 @@ import Image from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-class BlogPostTemplate extends React.Component {
+export default class PostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const { previous, next } = this.props.pageContext
@@ -25,97 +25,72 @@ class BlogPostTemplate extends React.Component {
           isArticle={true}
         />
 
-        <section className="hero is-primary is-bold">
-          <div className="hero-body">
-            <div className="container">
-              <h1 className="title is-3">{post.frontmatter.title}</h1>
+        <section className="container max-w-4xl px-4 lg:px-0">
+          {post.frontmatter.cover && (
+            <Image fluid={post.frontmatter.cover.childImageSharp.fluid} />
+          )}
+
+          <main>
+            <header className="mb-8">
+              <h1 className="font-bold text-4xl">{post.frontmatter.title}</h1>
               {post.frontmatter.description && (
-                <h2 className="subtitle is-4">
-                  {post.frontmatter.description}
-                </h2>
+                <h2 className="text-2xl">{post.frontmatter.description}</h2>
               )}
-              <p className="subtitle is-6">
+              <p className="text-lg">
                 {post.frontmatter.date_created}
                 {post.frontmatter.created !== post.frontmatter.updated && (
-                  <p className="subtitle is-6">
+                  <p className="text-lg">
                     Updated: {post.frontmatter.date_updated}
                   </p>
                 )}
               </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="section">
-          <div className="container">
-            <div className="columns is-centered">
-              <div className="column is-full-mobile is-8-desktop is-paddingless">
-                <div className="card">
-                  <div className="card-image">
-                    {post.frontmatter.cover && (
-                      <Image
-                        className="image"
-                        fluid={post.frontmatter.cover.childImageSharp.fluid}
-                      />
-                    )}
-                  </div>
-                  <div className="card-content">
-                    <div
-                      className="content"
-                      dangerouslySetInnerHTML={{ __html: post.html }}
-                    ></div>
-                  </div>
-                  <div className="card-footer">
-                    {post.frontmatter.tags && (
-                      <div className="card-footer-item tags">
-                        {post.frontmatter.tags.map(tag => (
-                          <span className="tag" key={tag + `tag`}>
-                            <Link to={`/tag/${kebabCase(tag)}/`}>{tag}</Link>
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+            </header>
+            <article
+              className="content"
+              dangerouslySetInnerHTML={{ __html: post.html }}
+            />
+            <footer className="flex flex-wrap justify-center">
+              {post.frontmatter.tags && (
+                <div className="tags">
+                  {post.frontmatter.tags.map(tag => (
+                    <Link
+                      to={`/tag/${kebabCase(tag)}/`}
+                      className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-blue-700 hover:text-blue-500 mr-2"
+                      key={tag + `tag`}
+                    >
+                      {tag}
+                    </Link>
+                  ))}
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
+              )}
+            </footer>
+          </main>
 
-        <section className="section">
-          <div className="container">
-            <div className="columns is-centered">
-              {previous && (
-                <div className="column is-full-mobile is-one-third-desktop">
-                  <Link
-                    to={previous.fields.slug}
-                    rel="prev"
-                    className="box has-text-left"
-                  >
+          <nav className="flex flex-wrap justify-center -mx-2 mt-8 mb-4">
+            {previous && (
+              <div className="w-full md:w-1/2 p-2 lg:p-1">
+                <Link to={previous.fields.slug} rel="prev">
+                  <div className="text-left rounded overflow-hidden border border-solid hover:border-blue-400 text-blue-700 hover:text-blue-500 p-3">
                     ← {previous.frontmatter.title}
-                  </Link>
-                </div>
-              )}
-              {next && (
-                <div className="column is-full-mobile is-one-third-desktop">
-                  <Link
-                    to={next.fields.slug}
-                    rel="next"
-                    className="box has-text-right"
-                  >
+                  </div>
+                </Link>
+              </div>
+            )}
+            {next && (
+              <div className="w-full md:w-1/2 p-2 lg:p-1">
+                <Link to={next.fields.slug} rel="next">
+                  <div className="text-right rounded overflow-hidden border border-solid hover:border-blue-400 text-blue-700 hover:text-blue-500 p-3">
                     {next.frontmatter.title} →
-                  </Link>
-                </div>
-              )}
-            </div>
-          </div>
+                  </div>
+                </Link>
+              </div>
+            )}
+          </nav>
         </section>
       </Layout>
     )
   }
 }
-
-export default BlogPostTemplate
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {

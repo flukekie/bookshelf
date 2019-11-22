@@ -1,9 +1,9 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import Image from "gatsby-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Card from "../components/card"
 
 const Tags = ({ pageContext, data }) => {
   const { tag } = pageContext
@@ -15,62 +15,38 @@ const Tags = ({ pageContext, data }) => {
   return (
     <Layout>
       <SEO title={`Tag: ${tag}`} />
-
-      <section className="hero is-primary is-bold">
-        <div className="hero-body">
-          <div className="container">
-            <div className="columns">
-              <div className="column">
-                <h1 className="title is-2">{tagHeader}</h1>
-                <button className="button">
-                  <Link to="/tags">All tags</Link>
-                </button>
-              </div>
-            </div>
-          </div>
+      
+      <section>
+        <div className="container mb-4 px-4 md:px-0">
+          <h1 className="text-4xl mb-4">{tagHeader}</h1>
+          <button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+            <Link to="/tags">View all tags</Link>
+          </button>
         </div>
       </section>
 
-      <section className="section">
-        <div className="container">
-          <div className="columns is-multiline">
-            {posts.map(({ node }) => {
-              const title = node.frontmatter.title || node.fields.slug
-              return (
-                <div
-                  className="column is-full-mobile is-half-tablet is-one-third-desktop"
-                  key={node.fields.slug}
-                >
-                  <Link to={node.fields.slug}>
-                    <div className="card">
-                      <div className="card-image">
-                        {node.frontmatter.cover && (
-                          <Image
-                            className="image"
-                            fluid={node.frontmatter.cover.childImageSharp.fluid}
-                          />
-                        )}
-                      </div>
-                      <div className="card-content">
-                        <h1 className="title is-4">
-                          <Link to={node.fields.slug}>{title}</Link>
-                        </h1>
-                        <h2 className="subtitle is-6">
-                          {node.frontmatter.created}
-                        </h2>
-                        <p
-                          dangerouslySetInnerHTML={{
-                            __html:
-                              node.frontmatter.description || node.excerpt,
-                          }}
-                        ></p>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              )
-            })}
-          </div>
+      <section className="container">
+        <div className="flex flex-wrap -mx-0 md:-mx-2">
+          {posts.map(({ node }) => {
+            return (
+              <div className="w-full md:w-1/2 lg:w-1/3 px-4 md:px-2 pb-4">
+                <Card
+                  link={node.fields.slug}
+                  title={node.frontmatter.title}
+                  subtitle={node.frontmatter.created}
+                  body={
+                    node.frontmatter.subtitle ||
+                    node.frontmatter.description ||
+                    node.excerpt
+                  }
+                  image={
+                    node.frontmatter.cover &&
+                    node.frontmatter.cover.childImageSharp
+                  }
+                />
+              </div>
+            )
+          })}
         </div>
       </section>
     </Layout>

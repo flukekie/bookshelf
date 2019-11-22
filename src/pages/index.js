@@ -1,11 +1,14 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
-import Image from "gatsby-image"
+import { graphql } from "gatsby"
+
+
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Card from "../components/card"
 
-class Homepage extends React.Component {
+
+export default class Homepage extends React.Component {
   render() {
     const { data } = this.props
     const posts = data.allMarkdownRemark.edges
@@ -13,59 +16,35 @@ class Homepage extends React.Component {
     return (
       <Layout>
         <SEO title="Homepage" />
-        <section className="section">
-          <div className="container">
-            <div className="columns is-multiline">
-              {posts.map(({ node }) => {
-                return (
-                  <div
-                    className="column is-full-mobile is-half-tablet is-one-third-desktop"
-                    key={node.fields.slug}
-                  >
-                    <Link to={node.fields.slug}>
-                      <div className="card" style={{ height: "100%" }}>
-                        <div className="card-image">
-                          {node.frontmatter.cover && (
-                            <Image
-                              className="image"
-                              sizes={
-                                node.frontmatter.cover.childImageSharp.fluid
-                              }
-                            />
-                          )}
-                        </div>
-                        <div className="card-content">
-                          <h1 className="title is-4">
-                            <Link to={node.fields.slug}>
-                              {node.frontmatter.title || node.fields.slug}
-                            </Link>
-                          </h1>
-                          <h2 className="subtitle is-6">
-                            {node.frontmatter.created}
-                          </h2>
-                          <p
-                            dangerouslySetInnerHTML={{
-                              __html:
-                                node.frontmatter.subtitle ||
-                                node.frontmatter.description ||
-                                node.excerpt,
-                            }}
-                          ></p>
-                        </div>
-                      </div>
-                    </Link>
-                  </div>
-                )
-              })}
-            </div>
+
+        <section className="container">
+          <div className="flex flex-wrap -mx-0 md:-mx-2">
+            {posts.map(({ node }) => {
+              return (
+                <div className="w-full md:w-1/2 lg:w-1/3 px-4 md:px-2 pb-4">
+                  <Card
+                    link={node.fields.slug}
+                    title={node.frontmatter.title}
+                    subtitle={node.frontmatter.created}
+                    body={
+                      node.frontmatter.subtitle ||
+                      node.frontmatter.description ||
+                      node.excerpt
+                    }
+                    image={
+                      node.frontmatter.cover &&
+                      node.frontmatter.cover.childImageSharp
+                    }
+                  />
+                </div>
+              )
+            })}
           </div>
         </section>
       </Layout>
     )
   }
 }
-
-export default Homepage
 
 export const pageQuery = graphql`
   query {
@@ -74,7 +53,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: {order: DESC, fields: frontmatter___created}, filter: {fileAbsolutePath: {regex: "/(posts)/.*\\\\.md$/"}}) {
+    allMarkdownRemark(
+      sort: { order: DESC, fields: frontmatter___created }
+      filter: { fileAbsolutePath: { regex: "/(posts)/.*\\\\.md$/" } }
+    ) {
       edges {
         node {
           excerpt

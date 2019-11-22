@@ -1,0 +1,129 @@
+@tailwind base;
+
+@tailwind components;
+
+/* purgecss start ignore */
+
+.content {
+  @apply text-gray-900 leading-relaxed;
+
+  h1 {
+    @apply text-4xl mt-6 mb-4;
+  }
+  h2 {
+    @apply text-3xl mt-5 mb-3;
+  }
+  h3 {
+    @apply text-2xl mt-4 mb-3;
+  }
+  h4 {
+    @apply text-xl mt-3 mb-3;
+  }
+  h5 {
+    @apply text-lg mt-2 mb-2;
+  }
+  h6 {
+    @apply text-base mt-1 mb-2;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold;
+  }
+
+  p {
+    @apply mb-4;
+  }
+
+  a {
+    @apply text-blue-700;
+    &:hover {
+      @apply text-blue-500;
+    }
+  }
+
+  blockquote {
+    @apply bg-gray-100 border-l-4 border-gray-500 mx-0 mb-4 p-4;
+    p {
+      @apply my-2;
+    }
+  }
+  li {
+    p {
+      @apply m-0;
+    }
+  }
+  ol {
+    @apply list-decimal list-outside ml-4 px-0;
+  }
+  ul {
+    @apply list-disc list-outside ml-4 px-0;
+  }
+
+  figure {
+    @apply my-2;
+
+    img {
+      @apply inline-block;
+    }
+    figcaption {
+      @apply text-center italic mt-2;
+    }
+  }
+  sup,
+  sub {
+    @apply text-sm;
+  }
+
+  table {
+    @apply w-full;
+
+    td,
+    th {
+      @apply align-top p-2 border-b;
+    }
+    th {
+      &:not([align]) {
+        @apply text-left;
+      }
+    }
+
+    thead {
+      td,
+      th {
+        @apply border-b-2;
+      }
+    }
+
+    tfoot {
+      td,
+      th {
+        @apply border-b;
+      }
+    }
+
+    tbody {
+      tr {
+        td,
+        th {
+          @apply border-b;
+        }
+      }
+    }
+  }
+
+  hr {
+    @apply my-6 border-t-2 border-gray-400;
+  }
+}
+.footnotes {
+  ol {
+    @apply ml-4 px-0;
+  }
+}
+/* purgecss end ignore */
+
+@tailwind utilities;
