@@ -60,7 +60,7 @@ module.exports = {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
               offsetY: 0,
-              enableCustomId: true
+              enableCustomId: true,
             },
           },
           `gatsby-remark-prismjs`,
@@ -73,8 +73,19 @@ module.exports = {
       options: {
         postCssPlugins: [
           require("tailwindcss"),
+          require("postcss-nested"),
+          require("autoprefixer"),
           require("./tailwind.config.js"), // Optional: Load custom Tailwind CSS configuration
         ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-purgecss`,
+      options: {
+        printRejected: true,
+        develop: false,
+        tailwind: true,
+        ignore: ["prismjs/"],
       },
     },
     `gatsby-transformer-sharp`,

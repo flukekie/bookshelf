@@ -17,7 +17,7 @@ const Tags = ({ pageContext, data }) => {
       <SEO title={`Tag: ${tag}`} />
       
       <section>
-        <div className="container my-6">
+        <div className="container mb-4 px-4 md:px-0">
           <h1 className="text-4xl mb-4">{tagHeader}</h1>
           <button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
             <Link to="/tags">View all tags</Link>

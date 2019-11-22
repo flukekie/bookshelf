@@ -2,6 +2,8 @@
 
 @tailwind components;
 
+/* purgecss start ignore */
+
 .content {
   @apply text-gray-900 leading-relaxed;
 
@@ -37,17 +39,16 @@
   }
 
   a {
+    @apply text-blue-700;
     &:hover {
-      @apply underline;
+      @apply text-blue-500;
     }
   }
+
   blockquote {
-    @apply bg-gray-100 border-l-4 border-gray-500 mb-4 p-4;
+    @apply bg-gray-100 border-l-4 border-gray-500 mx-0 mb-4 p-4;
     p {
       @apply my-2;
-      a {
-        @apply text-blue-700;
-      }
     }
   }
   li {
@@ -56,10 +57,10 @@
     }
   }
   ol {
-    @apply list-decimal list-outside ml-4;
+    @apply list-decimal list-outside ml-4 px-0;
   }
   ul {
-    @apply list-disc list-outside ml-4;
+    @apply list-disc list-outside ml-4 px-0;
   }
 
   figure {
@@ -72,8 +73,9 @@
       @apply text-center italic mt-2;
     }
   }
-  sup,sub{
-      @apply text-sm;
+  sup,
+  sub {
+    @apply text-sm;
   }
 
   table {
@@ -117,5 +119,11 @@
     @apply my-6 border-t-2 border-gray-400;
   }
 }
+.footnotes {
+  ol {
+    @apply ml-4 px-0;
+  }
+}
+/* purgecss end ignore */
 
 @tailwind utilities;

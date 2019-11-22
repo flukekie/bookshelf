@@ -14,19 +14,19 @@ const TagsPage = ({
   <Layout>
     <SEO title="All Tags" />
     <section>
-      <div className="container my-6">
+      <div className="container px-4 md:px-0">
         <h1 className="text-4xl mb-4">All tags</h1>
       </div>
     </section>
     <section>
-      <div className="container my-6">
+      <div className="container px-4 md:px-0">
         {group.map(tag => (
-          <div className="inline-block mr-2">
+          <div className="inline-block mr-2 mb-2 text-sm font-semibold text-blue-800 hover:text-blue-500">
             <Link to={`/tag/${kebabCase(tag.fieldValue)}/`}>
-              <span className="inline-block bg-blue-200 rounded-l px-3 py-1 text-sm font-semibold text-gray-700">
+              <span className="inline-block bg-blue-200 rounded-l px-3 py-1">
                 {_capitalize(tag.fieldValue)}
               </span>
-              <span className="inline-block bg-gray-200 rounded-r px-3 py-1 text-sm font-semibold text-gray-700">
+              <span className="inline-block bg-gray-200 rounded-r px-3 py-1">
                 {tag.totalCount}
               </span>
             </Link>

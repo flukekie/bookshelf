@@ -6,7 +6,6 @@ import Image from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-
 export default class PostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
@@ -26,13 +25,13 @@ export default class PostTemplate extends React.Component {
           isArticle={true}
         />
 
-        <section className="container max-w-4xl">
+        <section className="container max-w-4xl px-4 lg:px-0">
           {post.frontmatter.cover && (
             <Image fluid={post.frontmatter.cover.childImageSharp.fluid} />
           )}
 
           <main>
-            <header className="pb-8">
+            <header className="mb-8">
               <h1 className="font-bold text-4xl">{post.frontmatter.title}</h1>
               {post.frontmatter.description && (
                 <h2 className="text-2xl">{post.frontmatter.description}</h2>
@@ -50,36 +49,41 @@ export default class PostTemplate extends React.Component {
               className="content"
               dangerouslySetInnerHTML={{ __html: post.html }}
             />
-            <footer className="flex flex-wrap justify-center my-4">
+            <footer className="flex flex-wrap justify-center">
               {post.frontmatter.tags && (
                 <div className="tags">
                   {post.frontmatter.tags.map(tag => (
-                    <span
-                      className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
+                    <Link
+                      to={`/tag/${kebabCase(tag)}/`}
+                      className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-blue-700 hover:text-blue-500 mr-2"
                       key={tag + `tag`}
                     >
-                      <Link to={`/tag/${kebabCase(tag)}/`}>{tag}</Link>
-                    </span>
+                      {tag}
+                    </Link>
                   ))}
                 </div>
               )}
             </footer>
           </main>
 
-          <nav className="flex flex-wrap justify-center -mx-2 my-4">
+          <nav className="flex flex-wrap justify-center -mx-2 mt-8 mb-4">
             {previous && (
-              <Link to={previous.fields.slug} rel="prev" className="w-1/2 px-2">
-                <div className="text-left rounded overflow-hidden border border-solid hover:border-blue-300 p-3">
-                  ← {previous.frontmatter.title}
-                </div>
-              </Link>
+              <div className="w-full md:w-1/2 p-2 lg:p-1">
+                <Link to={previous.fields.slug} rel="prev">
+                  <div className="text-left rounded overflow-hidden border border-solid hover:border-blue-400 text-blue-700 hover:text-blue-500 p-3">
+                    ← {previous.frontmatter.title}
+                  </div>
+                </Link>
+              </div>
             )}
             {next && (
-              <Link to={next.fields.slug} rel="next" className="w-1/2 px-2">
-                <div className="text-right rounded overflow-hidden border border-solid p-3">
-                  {next.frontmatter.title} →
-                </div>
-              </Link>
+              <div className="w-full md:w-1/2 p-2 lg:p-1">
+                <Link to={next.fields.slug} rel="next">
+                  <div className="text-right rounded overflow-hidden border border-solid hover:border-blue-400 text-blue-700 hover:text-blue-500 p-3">
+                    {next.frontmatter.title} →
+                  </div>
+                </Link>
+              </div>
             )}
           </nav>
         </section>
@@ -87,7 +91,6 @@ export default class PostTemplate extends React.Component {
     )
   }
 }
-
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
