@@ -34,7 +34,7 @@ export default class PostTemplate extends React.Component {
             <header className="mb-8">
               <h1 className="font-bold text-4xl">{post.frontmatter.title}</h1>
               {post.frontmatter.description && (
-                <h2 className="text-2xl">{post.frontmatter.description}</h2>
+                <p className="text-2xl">{post.frontmatter.description}</p>
               )}
               <p className="text-lg">
                 {post.frontmatter.date_created}
@@ -45,7 +45,7 @@ export default class PostTemplate extends React.Component {
                 )}
               </p>
             </header>
-            <article
+            <section
               className="content"
               dangerouslySetInnerHTML={{ __html: post.html }}
             />

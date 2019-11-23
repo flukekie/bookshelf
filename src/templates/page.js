@@ -27,10 +27,10 @@ class PageTemplate extends React.Component {
             <header className="pb-8">
               <h1 className="font-bold text-4xl">{page.frontmatter.title}</h1>
               {page.frontmatter.description && (
-                <h2 className="text-2xl">{page.frontmatter.description}</h2>
+                <p className="text-2xl">{page.frontmatter.description}</p>
               )}
             </header>
-            <article
+            <section
               className="content"
               dangerouslySetInnerHTML={{ __html: page.html }}
             />
