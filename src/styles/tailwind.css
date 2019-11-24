@@ -1,8 +1,25 @@
 @tailwind base;
 
 @tailwind components;
-
 /* purgecss start ignore */
+
+#menu-toggle:checked + #menu {
+  display: block;
+}
+
+.icon {
+  @apply mx-1 text-gray-600 text-xl;
+  &:hover {
+    @apply text-gray-900;
+  }
+}
+
+.card {
+  @apply rounded overflow-hidden h-full border border-solid text-blue-700;
+  &:hover {
+    @apply border-blue-400 text-blue-500;
+  }
+}
 
 .content {
   @apply text-gray-900 leading-relaxed;
@@ -57,10 +74,22 @@
     }
   }
   ol {
-    @apply list-decimal list-outside ml-4 px-0;
+    @apply list-decimal list-outside px-0;
+    li {
+      @apply ml-4;
+    }
   }
   ul {
-    @apply list-disc list-outside ml-4 px-0;
+    @apply list-disc list-outside px-0;
+    li {
+      @apply ml-4;
+    }
+    .task-list-item {
+      @apply list-none;
+      input {
+        @apply mr-1;
+      }
+    }
   }
 
   figure {
@@ -79,7 +108,7 @@
   }
 
   table {
-    @apply w-full;
+    @apply w-full mb-4;
 
     td,
     th {
@@ -121,9 +150,9 @@
 }
 .footnotes {
   ol {
-    @apply ml-4 px-0;
+    @apply ml-0 px-0;
   }
 }
-/* purgecss end ignore */
 
+/* purgecss end ignore */
 @tailwind utilities;
