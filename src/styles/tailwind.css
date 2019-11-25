@@ -68,26 +68,49 @@
       @apply my-2;
     }
   }
+
   li {
     p {
       @apply m-0;
     }
   }
+
   ol {
     @apply list-decimal list-outside px-0;
+
+    &:not(:last-child) {
+      @apply mb-4;
+    }
+
     li {
       @apply ml-4;
     }
   }
+
   ul {
     @apply list-disc list-outside px-0;
+
+    &:not(:last-child) {
+      @apply mb-4;
+    }
+
     li {
       @apply ml-4;
+      
     }
+
     .task-list-item {
-      @apply list-none;
+      @apply list-none ml-0;
       input {
         @apply mr-1;
+      }
+    }
+
+    ul {
+      list-style-type: circle;
+
+      ul {
+        list-style-type: square;
       }
     }
   }
