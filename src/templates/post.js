@@ -49,7 +49,7 @@ export default class PostTemplate extends React.Component {
               className="content"
               dangerouslySetInnerHTML={{ __html: post.html }}
             />
-            <footer className="flex flex-wrap justify-center">
+            <nav className="flex flex-wrap justify-center">
               {post.frontmatter.tags && (
                 <div className="tags">
                   {post.frontmatter.tags.map(tag => (
@@ -63,7 +63,7 @@ export default class PostTemplate extends React.Component {
                   ))}
                 </div>
               )}
-            </footer>
+            </nav>
           </main>
 
           <nav className="flex flex-wrap justify-center -mx-2 mt-8 mb-4">
