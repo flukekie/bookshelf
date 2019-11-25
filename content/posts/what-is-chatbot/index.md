@@ -5,7 +5,7 @@ description: >
 
 created: 2019-02-04T03:41:00Z
 updated: 2019-02-04T03:41:00Z
-cover: chatbot-blog-cover.png
+cover: chatbot-blog-cover.jpg
 tags: 
   - What is?
   - Chatbots

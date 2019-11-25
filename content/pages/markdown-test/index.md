@@ -24,10 +24,25 @@ the
 
 ##### Table of Contents
 
-[Headers](#headers) [Emphasis](#emphasis) [Lists](#lists) [Links](#links)
-[Images](#images) [Tables](#tables) [Footnotes](#footnotes)
-[Blockquotes](#blockquotes) [Inline HTML](#html) [Horizontal Rule](#hr)
-[Line Breaks](#lines)
+- [H1](#h1)
+  - [H2](#h2)
+    - [H3](#h3)
+      - [H4](#h4)
+        - [H5](#h5)
+          - [H6](#h6)
+- [Alt-H1](#alt-h1)
+  - [Alt-H2](#alt-h2)
+  - [Emphasis](#emphasis)
+  - [Lists](#lists)
+  - [Links](#links)
+  - [Images](#images)
+  - [Tables](#tables)
+  - [Footnotes](#footnotes)
+  - [Blockquotes](#blockquotes)
+  - [Inline HTML](#inline-html)
+  - [Horizontal Rule](#horizontal-rule)
+  - [Line Breaks](#line-breaks)
+  - [Tasks List](#tasks-list)
 
 <a name="headers"></a>
 
@@ -223,20 +238,20 @@ that would otherwise require copy-pasting from another application.
 ```no-highlight
 Colons can be used to align columns.
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
+| Tables        |      Are      |  Cool |
+| ------------- | :-----------: | ----: |
 | col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+| col 2 is      |   centered    |   $12 |
+| zebra stripes |   are neat    |    $1 |
 
 There must be at least 3 dashes separating each header cell.
 The outer pipes (|) are optional, and you don't need to make the
 raw Markdown line up prettily. You can also use inline Markdown.
 
-Markdown | Less | Pretty
---- | --- | ---
-*Still* | `renders` | **nicely**
-1 | 2 | 3
+| Markdown | Less      | Pretty     |
+| -------- | --------- | ---------- |
+| *Still*  | `renders` | **nicely** |
+| 1        | 2         | 3          |
 ```
 
 Colons can be used to align columns.
@@ -374,6 +389,20 @@ _separate paragraph_.
 This line is also begins a separate paragraph, but...\
 This line is only separated by a single newline, so it's a separate line in the _same
 paragraph_.
+
+<a name="tasks"></a>
+
+## Tasks List
+
+```
+- [x] Finish my changes
+- [ ] Push my commits to GitHub
+- [ ] Open a pull request
+```
+
+- [x] Finish my changes
+- [ ] Push my commits to GitHub
+- [ ] Open a pull request
 
 [^1]: The footnote appears at the bottom of the page
 
