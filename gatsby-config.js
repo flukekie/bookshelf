@@ -161,7 +161,7 @@ module.exports = {
         icon: `src/assets/icon.png`,
       },
     },
-    `gatsby-plugin-offline`,
+    `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
   ],
