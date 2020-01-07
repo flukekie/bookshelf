@@ -1,12 +1,9 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-
-
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Card from "../components/card"
-
 
 export default class Homepage extends React.Component {
   render() {
@@ -15,7 +12,7 @@ export default class Homepage extends React.Component {
 
     return (
       <Layout>
-        <SEO title="Homepage" />
+        <SEO />
 
         <section className="container">
           <div className="flex flex-wrap -mx-0 md:-mx-2">

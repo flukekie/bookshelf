@@ -15,7 +15,7 @@ const Tags = ({ pageContext, data }) => {
   return (
     <Layout>
       <SEO title={`Tag: ${tag}`} />
-      
+
       <section>
         <div className="container mb-4 px-4 md:px-0">
           <h1 className="text-4xl mb-4">{tagHeader}</h1>

@@ -23,6 +23,9 @@ export default class PostTemplate extends React.Component {
               : null
           }
           isArticle={true}
+          created={post.frontmatter.created}
+          updated={post.frontmatter.updated}
+          tags={post.frontmatter.tags}
         />
 
         <section className="container max-w-4xl px-4 lg:px-0">

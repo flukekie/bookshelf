@@ -44,7 +44,6 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
-
       }
     `
   )
@@ -71,19 +70,18 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-    // Create blog posts pages.
-    const pages = result.data.pages.edges
+  // Create blog posts pages.
+  const pages = result.data.pages.edges
 
-    pages.forEach((page) => {
-      
-      createPage({
-        path: page.node.fields.slug,
-        component: pageTemplate,
-        context: {
-          slug: page.node.fields.slug,
-        },
-      })
+  pages.forEach(page => {
+    createPage({
+      path: page.node.fields.slug,
+      component: pageTemplate,
+      context: {
+        slug: page.node.fields.slug,
+      },
     })
+  })
 
   /* create Tags pages */
   // pulled directly from https://www.gatsbyjs.org/docs/adding-tags-and-categories-to-blog-posts/#add-tags-to-your-markdown-files
