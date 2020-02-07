@@ -3,6 +3,7 @@
 @tailwind components;
 /* purgecss start ignore */
 
+
 #menu-toggle:checked + #menu {
   display: block;
 }
@@ -15,9 +16,9 @@
 }
 
 .card {
-  @apply rounded overflow-hidden h-full border border-solid text-blue-700;
+  @apply rounded overflow-hidden h-full border border-r-2 border-b-2 border-solid text-blue-700 bg-white;
   &:hover {
-    @apply border-blue-400 text-blue-500;
+    @apply border-blue-300;
   }
 }
 

@@ -35,9 +35,9 @@ export default class PostTemplate extends React.Component {
 
           <main>
             <header className="mb-8">
-              <h1 className="font-bold text-4xl">{post.frontmatter.title}</h1>
+              <h1 className="font-bold text-3xl lg:text-4xl">{post.frontmatter.title}</h1>
               {post.frontmatter.description && (
-                <p className="text-2xl">{post.frontmatter.description}</p>
+                <p className="text-xl lg:text-2xl">{post.frontmatter.description}</p>
               )}
               <p className="text-lg">
                 {post.frontmatter.date_created}
@@ -73,7 +73,7 @@ export default class PostTemplate extends React.Component {
             {previous && (
               <div className="w-full md:w-1/2 p-2 lg:p-1">
                 <Link to={previous.fields.slug} rel="prev">
-                  <div className="text-left rounded overflow-hidden border border-solid hover:border-blue-400 text-blue-700 hover:text-blue-500 p-3">
+                  <div className="text-left rounded overflow-hidden border border-r-2 border-b-2 border-solid hover:border-blue-400 text-blue-700 hover:text-blue-500 p-3">
                     ← {previous.frontmatter.title}
                   </div>
                 </Link>
@@ -82,7 +82,7 @@ export default class PostTemplate extends React.Component {
             {next && (
               <div className="w-full md:w-1/2 p-2 lg:p-1">
                 <Link to={next.fields.slug} rel="next">
-                  <div className="text-right rounded overflow-hidden border border-solid hover:border-blue-400 text-blue-700 hover:text-blue-500 p-3">
+                  <div className="text-right rounded overflow-hidden border border-r-2 border-b-2 border-solid hover:border-blue-400 text-blue-700 hover:text-blue-500 p-3">
                     {next.frontmatter.title} →
                   </div>
                 </Link>
