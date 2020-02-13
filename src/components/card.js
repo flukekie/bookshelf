@@ -13,9 +13,9 @@ export default ({ link, title, subtitle, body, image, className }) => (
         <h1 className="font-bold text-xl">
           <Link to={link}>{title}</Link>
         </h1>
-        <p className="text-sm text-gray-700">{subtitle}</p>
+        <p className="text-sm">{subtitle}</p>
         <p
-          className="text-base text-gray-700 mt-2"
+          className="text-base mt-2"
           dangerouslySetInnerHTML={{
             __html: body,
           }}

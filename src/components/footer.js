@@ -12,14 +12,14 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 mt-4 p-4">
+    <footer className="footer mt-4 p-4 border-t">
       <nav className="container flex items-center justify-between flex-wrap">
         <div className="flex items-center flex-shrink-0">
-          <small className="text-sm text-gray-600">
+          <small className="text-sm">
             &copy; {new Date().getFullYear()} Flukekie
           </small>
           <a
-            className="ml-2 text-gray-600 hover:text-gray-900 text-xl"
+            className="icon"
             href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
             target="_blank"
             rel="noopener noreferrer"
@@ -33,7 +33,7 @@ const Footer = () => {
         </div>
         <div className="flex items-center flex-shrink-0">
           <a
-            className="ml-2 text-gray-600 hover:text-gray-900 text-xl"
+            className="icon"
             href="https://github.com/flukekie/flukekie.net"
             target="_blank"
             rel="noopener noreferrer"
@@ -42,7 +42,7 @@ const Footer = () => {
             <FontAwesomeIcon icon={faGithub} />
           </a>
           <a
-            className="ml-2 text-gray-600 hover:text-gray-900 text-xl"
+            className="icon"
             href="https://www.facebook.com/flukekie.net"
             target="_blank"
             rel="noopener noreferrer"
@@ -51,7 +51,7 @@ const Footer = () => {
             <FontAwesomeIcon icon={faFacebook} />
           </a>
           <a
-            className="ml-2 text-gray-600 hover:text-gray-900 text-xl"
+            className="icon"
             href="https://medium.com/flukekie"
             target="_blank"
             rel="noopener noreferrer"

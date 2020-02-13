@@ -4,6 +4,9 @@ module.exports = {
       center: true,
     },
     extend: {
+      screens:{
+        'dark':{raw: '(prefers-color-scheme: dark)'},
+      },
       colors: {
         malachite: {
           "50": "#e7f9e8",
@@ -16,18 +19,6 @@ module.exports = {
           "700": "#00a91a",
           "800": "#009705",
           "900": "#007800",
-        },
-        turquoise: {
-          "50": "#e1f5f9",
-          "100": "#b2e4f1",
-          "200": "#82d2e9",
-          "300": "#55c0e1",
-          "400": "#33b3dd",
-          "500": "#0ea7da",
-          "600": "#0099cc",
-          "700": "#0086ba",
-          "800": "#0076a6",
-          "900": "#005685",
         },
       },
     },

@@ -3,27 +3,83 @@
 @tailwind components;
 /* purgecss start ignore */
 
+body {
+  @apply bg-white text-gray-900;
+  @screen dark {
+    @apply bg-gray-900 text-gray-300;
+  }
+}
 
-#menu-toggle:checked + #menu {
-  display: block;
+.header {
+  @apply border-gray-300;
+  nav {
+    a {
+      &:hover {
+        @apply bg-gray-100 text-malachite-800;
+      }
+    }
+  }
+
+  #menu-toggle:checked + #menu {
+    display: block;
+  }
+
+  @screen dark {
+    @apply border-gray-700;
+    nav {
+      a {
+        &:hover {
+          @apply bg-gray-800 text-malachite-600;
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  @apply border-gray-300;
+
+  @screen dark {
+    @apply border-gray-700;
+  }
 }
 
 .icon {
   @apply mx-1 text-gray-600 text-xl;
   &:hover {
-    @apply text-gray-900;
+    @apply text-malachite-700;
   }
 }
 
 .card {
-  @apply rounded overflow-hidden h-full border border-r-2 border-b-2 border-solid text-blue-700 bg-white;
+  @apply rounded overflow-hidden h-full border border-r-2 border-b-2 border-solid;
+  h1 {
+    @apply text-gray-900;
+  }
+  p {
+    @apply text-gray-700;
+  }
   &:hover {
-    @apply border-blue-300;
+    @apply border-malachite-500;
+  }
+
+  @screen dark {
+    @apply border-gray-600;
+    h1 {
+      @apply text-gray-200;
+    }
+    p {
+      @apply text-gray-400;
+    }
   }
 }
 
 .content {
   @apply text-gray-900 leading-relaxed;
+
+  @screen dark {
+    @apply text-gray-400;
+  }
 
   h1 {
     @apply text-4xl mt-6 mb-4;
@@ -49,6 +105,9 @@
   h4,
   h5,
   h6 {
+    @screen dark {
+      @apply text-gray-200;
+    }
     @apply font-bold;
   }
 
@@ -57,16 +116,27 @@
   }
 
   a {
-    @apply text-blue-700;
+    @apply text-malachite-900;
     &:hover {
-      @apply text-blue-500;
+      @apply text-malachite-700 underline;
+    }
+
+    @screen dark {
+      @apply text-malachite-700;
+      &:hover {
+        @apply text-malachite-600 underline;
+      }
     }
   }
 
   blockquote {
-    @apply bg-gray-100 border-l-4 border-gray-500 mx-0 mb-4 p-4;
+    @apply bg-gray-100 border-l-4 border-malachite-500 mx-0 mb-4 p-4;
     p {
       @apply my-2;
+    }
+
+    @screen dark {
+      @apply bg-gray-800;
     }
   }
 
@@ -97,7 +167,6 @@
 
     li {
       @apply ml-4;
-      
     }
 
     .task-list-item {
@@ -122,6 +191,7 @@
     img {
       @apply inline-block;
     }
+
     figcaption {
       @apply text-center italic mt-2;
     }
@@ -169,12 +239,27 @@
   }
 
   hr {
-    @apply my-6 border-t-2 border-gray-400;
+    @apply my-6 border border-gray-500;
   }
 }
+
 .footnotes {
   ol {
     @apply ml-0 px-0;
+  }
+}
+
+.tag {
+  @apply border-gray-300 text-malachite-700;
+  &:hover {
+    @apply border-malachite-500;
+  }
+}
+
+.button {
+  @apply border-gray-400 text-malachite-700;
+  &:hover {
+    @apply border-malachite-500;
   }
 }
 

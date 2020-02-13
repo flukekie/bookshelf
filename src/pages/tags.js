@@ -21,13 +21,10 @@ const TagsPage = ({
     <section>
       <div className="container px-4 md:px-0">
         {group.map(tag => (
-          <div className="inline-block mr-2 mb-2 text-sm font-semibold text-blue-800 hover:text-blue-500">
+          <div className=" inline-block mr-2 mb-2 text-sm font-semibold">
             <Link to={`/tag/${kebabCase(tag.fieldValue)}/`}>
-              <span className="inline-block bg-blue-200 rounded-l px-3 py-1">
-                {_capitalize(tag.fieldValue)}
-              </span>
-              <span className="inline-block bg-gray-200 rounded-r px-3 py-1">
-                {tag.totalCount}
+              <span className="tag inline-block border rounded-full px-3 py-1">
+                {`${_capitalize(tag.fieldValue)} (${tag.totalCount})`}
               </span>
             </Link>
           </div>
