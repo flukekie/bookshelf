@@ -2,6 +2,10 @@
 
 @tailwind components;
 /* purgecss start ignore */
+html {
+  font-size: 18px;
+  @apply font-body;
+}
 
 body {
   @apply bg-white text-gray-900;
@@ -20,10 +24,6 @@ body {
     }
   }
 
-  #menu-toggle:checked + #menu {
-    display: block;
-  }
-
   @screen dark {
     @apply border-gray-700;
     nav {
@@ -34,10 +34,14 @@ body {
       }
     }
   }
+
+  #menu-toggle:checked + #menu {
+    display: block;
+  }
 }
 
 .footer {
-  @apply border-gray-300;
+  @apply text-gray-500 border-gray-300;
 
   @screen dark {
     @apply border-gray-700;
@@ -45,14 +49,16 @@ body {
 }
 
 .icon {
-  @apply mx-1 text-gray-600 text-xl;
+  @apply mx-1 text-xl;
   &:hover {
     @apply text-malachite-700;
   }
 }
 
 .card {
-  @apply rounded overflow-hidden h-full border border-r-2 border-b-2 border-solid;
+  @apply rounded border border-r-2 border-b-2 border-solid;
+
+  @apply border-gray-400;
   h1 {
     @apply text-gray-900;
   }
@@ -71,11 +77,14 @@ body {
     p {
       @apply text-gray-400;
     }
+    &:hover {
+      @apply border-malachite-500;
+    }
   }
 }
 
 .content {
-  @apply text-gray-900 leading-relaxed;
+  @apply text-gray-700 leading-relaxed;
 
   @screen dark {
     @apply text-gray-400;
@@ -105,10 +114,10 @@ body {
   h4,
   h5,
   h6 {
+    @apply font-bold text-gray-900;
     @screen dark {
       @apply text-gray-200;
     }
-    @apply font-bold;
   }
 
   p {
@@ -193,7 +202,7 @@ body {
     }
 
     figcaption {
-      @apply text-center italic mt-2;
+      @apply text-center text-sm italic mt-2;
     }
   }
   sup,
@@ -250,9 +259,15 @@ body {
 }
 
 .tag {
-  @apply border-gray-300 text-malachite-700;
+  @apply border-gray-400 text-malachite-700;
   &:hover {
     @apply border-malachite-500;
+  }
+  @screen dark {
+    @apply border-gray-600 text-malachite-700;
+    &:hover {
+      @apply border-malachite-500;
+    }
   }
 }
 
@@ -260,6 +275,12 @@ body {
   @apply border-gray-400 text-malachite-700;
   &:hover {
     @apply border-malachite-500;
+  }
+  @screen dark {
+    @apply border-gray-600 text-malachite-700;
+    &:hover {
+      @apply border-malachite-500;
+    }
   }
 }
 

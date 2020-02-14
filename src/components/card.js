@@ -5,7 +5,7 @@ import Image from "gatsby-image"
 
 export default ({ link, title, subtitle, body, image, className }) => (
   <Link to={link}>
-    <div className="card">
+    <div className="card overflow-hidden h-full">
       {image && image.fixed && <Image className="w-full" fixed={image.fixed} />}
       {image && image.fluid && <Image className="w-full" fluid={image.fluid} />}
 

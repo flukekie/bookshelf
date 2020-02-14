@@ -29,33 +29,40 @@ export default class PostTemplate extends React.Component {
         />
 
         <section className="container max-w-4xl px-4 lg:px-0">
-          {post.frontmatter.cover && (
-            <Image fluid={post.frontmatter.cover.childImageSharp.fluid} />
-          )}
-
           <main>
             <header className="mb-8">
+              {/* title */}
               <h1 className="font-bold text-3xl lg:text-4xl">
                 {post.frontmatter.title}
               </h1>
+              {/* description */}
               {post.frontmatter.description && (
                 <p className="text-xl lg:text-2xl">
                   {post.frontmatter.description}
                 </p>
               )}
-              <p className="text-lg">
+              {/* date stuff */}
+              <p className="text-base">
                 {post.frontmatter.date_created}
                 {post.frontmatter.created !== post.frontmatter.updated && (
-                  <p className="text-lg">
+                  <p className="text-base">
                     Updated: {post.frontmatter.date_updated}
                   </p>
                 )}
               </p>
             </header>
+
+            {post.frontmatter.cover && (
+              <Image fluid={post.frontmatter.cover.childImageSharp.fluid} />
+            )}
+
+            {/* the meat */}
             <section
-              className="content"
+              className="content mt-8"
               dangerouslySetInnerHTML={{ __html: post.html }}
             />
+
+            {/* content tags */}
             <nav className="flex flex-wrap justify-center">
               {post.frontmatter.tags && (
                 <div className="tags">
@@ -73,6 +80,7 @@ export default class PostTemplate extends React.Component {
             </nav>
           </main>
 
+          {/* previous and next page buttons */}
           <nav className="flex flex-wrap justify-center -mx-2 mt-8 mb-4">
             {previous && (
               <div className="w-full md:w-1/2 p-2 lg:p-1">

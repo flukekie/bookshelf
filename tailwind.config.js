@@ -1,11 +1,13 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   theme: {
     container: {
       center: true,
     },
     extend: {
-      screens:{
-        'dark':{raw: '(prefers-color-scheme: dark)'},
+      screens: {
+        dark: { raw: "(prefers-color-scheme: dark)" },
       },
       colors: {
         malachite: {
@@ -20,6 +22,9 @@ module.exports = {
           "800": "#009705",
           "900": "#007800",
         },
+      },
+      fontFamily: {
+        body: ["Bai Jamjuree", ...defaultTheme.fontFamily.sans],
       },
     },
   },
