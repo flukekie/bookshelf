@@ -32,6 +32,9 @@ export default class Homepage extends React.Component {
                       node.frontmatter.cover &&
                       node.frontmatter.cover.childImageSharp
                     }
+                    tags={
+                      node.frontmatter.tags && node.frontmatter.tags
+                    }
                   />
                 </div>
               )

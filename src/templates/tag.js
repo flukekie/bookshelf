@@ -43,6 +43,7 @@ const Tags = ({ pageContext, data }) => {
                     node.frontmatter.cover &&
                     node.frontmatter.cover.childImageSharp
                   }
+                  tags={node.frontmatter.tags && node.frontmatter.tags}
                 />
               </div>
             )
