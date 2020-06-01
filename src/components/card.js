@@ -11,18 +11,15 @@ export default ({ link, title, subtitle, body, image, tags, className }) => (
       {image && image.fluid && <Image className="w-full" fluid={image.fluid} />}
 
       <div className="p-3 md:p-4">
-        
-        <Link
-          to={`/tag/${kebabCase(tags[0])}/`}
-          className="tag"
-        >
-          {tags[0]}
-        </Link>
-
         <h1 className="font-bold text-xl">
           <Link to={link}>{title}</Link>
         </h1>
-        <p className="text-sm">{subtitle}</p>
+        <p className="text-sm">
+          {subtitle} · {" "}
+          <Link to={`/tag/${kebabCase(tags[0])}/`} className="tag text-sm">
+            {tags[0]}
+          </Link>
+        </p>
         <p
           className="text-base mt-2"
           dangerouslySetInnerHTML={{
