@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Flukekie`,
-    description: `That corner of the internet`,
+    title: `Flukekie's Bookshelf`,
+    description: `Just a random bookshelf on the internet`,
     siteUrl: `https://flukekie.net/`,
     cover: `cover.png`,
     author: {
@@ -144,11 +144,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `flukekie.net`,
+        name: `Flukekie's Bookshelf`,
         short_name: `Flukekie`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#228822`,
+        theme_color: `#00cc33`,
         display: `minimal-ui`,
         icon: `src/assets/icon.png`,
       },
