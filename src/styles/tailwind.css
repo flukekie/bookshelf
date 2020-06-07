@@ -84,7 +84,7 @@ body {
 }
 
 .content {
-  @apply text-gray-700 leading-relaxed;
+  @apply text-gray-800 leading-relaxed;
 
   @screen dark {
     @apply text-gray-400;

@@ -1,7 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBars } from "@fortawesome/free-solid-svg-icons"
+
 import logo from "../assets/logo.png"
 import logoDark from "../assets/logo_dark.png"
 
@@ -21,10 +20,21 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <label htmlFor="menu-toggle" className="block lg:hidden cursor-pointer">
-        <FontAwesomeIcon icon={faBars} className="text-2xl align-middle" />
+      <label htmlFor="menu-toggle" className="block lg:hidden cursor-pointer border rounded p-1">
+        <svg
+          className="fill-current w-6 h-5"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+        >
+          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+        </svg>
       </label>
-      <input className="hidden" type="checkbox" id="menu-toggle" />
+      <input
+        className="hidden"
+        type="checkbox"
+        aria-label="Menu Toggle"
+        id="menu-toggle"
+      />
 
       <div
         className="hidden lg:flex lg:items-center lg:w-auto w-full"
