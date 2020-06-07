@@ -79,15 +79,7 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-plugin-purgecss`,
-      options: {
-        printRejected: false,
-        develop: false,
-        tailwind: true,
-        ignore: ["prismjs/"],
-      },
-    },
+
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
