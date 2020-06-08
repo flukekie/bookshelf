@@ -1,7 +1,7 @@
 @tailwind base;
 
 @tailwind components;
-/* purgecss start ignore */
+
 html {
   font-size: 18px;
   @apply font-body;
@@ -84,12 +84,6 @@ body {
 }
 
 .content {
-  @apply text-gray-800 leading-relaxed;
-
-  @screen dark {
-    @apply text-gray-400;
-  }
-
   h1 {
     @apply text-4xl mt-6 mb-4;
   }
@@ -121,7 +115,18 @@ body {
   }
 
   p {
-    @apply mb-4;
+    @apply text-gray-800 leading-7 mb-4;
+
+    @screen dark {
+      @apply text-gray-400;
+    }
+  }
+
+  strong {
+    @apply font-bold text-gray-900;
+    @screen dark {
+      @apply text-gray-200;
+    }
   }
 
   a {
@@ -139,7 +144,8 @@ body {
   }
 
   blockquote {
-    @apply bg-gray-100 border-l-4 border-malachite-500 mx-0 mb-4 p-4;
+    @apply bg-gray-200 border-l-4 border-malachite-500 mx-0 mb-4 p-4;
+    
     p {
       @apply my-2;
     }
@@ -259,7 +265,7 @@ body {
 }
 
 .tag {
-  @apply border-gray-400 text-malachite-700;
+  @apply border-gray-400 text-malachite-700 border-2 rounded-full px-3 py-1 mx-1;
   &:hover {
     @apply border-malachite-500;
   }
@@ -267,22 +273,37 @@ body {
     @apply border-gray-600 text-malachite-700;
     &:hover {
       @apply border-malachite-500;
+    }
+  }
+}
+
+.link {
+  @apply text-malachite-900;
+  &:hover {
+    @apply text-malachite-700 underline;
+  }
+
+  @screen dark {
+    @apply text-malachite-700;
+    &:hover {
+      @apply text-malachite-600 underline;
     }
   }
 }
 
 .button {
-  @apply border-gray-400 text-malachite-700;
+  @apply border rounded border-r-2 border-b-2 border-solid border-gray-400 p-3;
   &:hover {
     @apply border-malachite-500;
   }
+
   @screen dark {
-    @apply border-gray-600 text-malachite-700;
+    @apply border-gray-600;
     &:hover {
       @apply border-malachite-500;
     }
   }
 }
 
-/* purgecss end ignore */
+
 @tailwind utilities;

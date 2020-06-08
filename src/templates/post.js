@@ -31,27 +31,43 @@ export default class PostTemplate extends React.Component {
         <section className="container max-w-4xl px-4 lg:px-0">
           <main>
             <header className="mb-8">
+
+              {/* mini primary tag */}
+              {post.frontmatter.tags && (
+                <p className="text-sm">
+                  <Link
+                    to={`/tag/${kebabCase(post.frontmatter.tags[0])}/`}
+                    className="link text-sm"
+                  >
+                    {post.frontmatter.tags[0]}
+                  </Link>
+                </p>
+              )}
+
               {/* title */}
               <h1 className="font-bold text-3xl lg:text-4xl">
                 {post.frontmatter.title}
               </h1>
+              
               {/* description */}
               {post.frontmatter.description && (
                 <p className="text-xl lg:text-2xl">
                   {post.frontmatter.description}
                 </p>
               )}
+
               {/* date stuff */}
-              <p className="text-base">
+              <p className="text-base pt-1">
                 {post.frontmatter.date_created}
                 {post.frontmatter.created !== post.frontmatter.updated && (
-                  <p className="text-base">
+                  <p className="text-base pt-1">
                     Updated: {post.frontmatter.date_updated}
                   </p>
                 )}
               </p>
             </header>
 
+            {/* cover image */}
             {post.frontmatter.cover && (
               <Image fluid={post.frontmatter.cover.childImageSharp.fluid} />
             )}
@@ -66,10 +82,10 @@ export default class PostTemplate extends React.Component {
             <nav className="flex flex-wrap justify-center">
               {post.frontmatter.tags && (
                 <div className="tags">
-                  {post.frontmatter.tags.map(tag => (
+                  {post.frontmatter.tags.map((tag) => (
                     <Link
                       to={`/tag/${kebabCase(tag)}/`}
-                      className="tag inline-block border-2 rounded-full px-3 py-1 text-sm font-semibold mx-1"
+                      className="tag inline-block text-sm font-semibold"
                       key={tag + `tag`}
                     >
                       {tag}
@@ -85,8 +101,11 @@ export default class PostTemplate extends React.Component {
             {previous && (
               <div className="w-full md:w-1/2 p-2 lg:p-1">
                 <Link to={previous.fields.slug} rel="prev">
-                  <div className="button text-left rounded overflow-hidden border border-r-2 border-b-2 border-solid p-3">
-                    ← {previous.frontmatter.title}
+                  <div className="button text-left overflow-hidden h-full">
+                    <div className="text-sm">← Previous</div>
+                    <div className="pt-1 text-malachite-700">
+                      {previous.frontmatter.title}
+                    </div>
                   </div>
                 </Link>
               </div>
@@ -94,8 +113,11 @@ export default class PostTemplate extends React.Component {
             {next && (
               <div className="w-full md:w-1/2 p-2 lg:p-1">
                 <Link to={next.fields.slug} rel="next">
-                  <div className="button text-right rounded overflow-hidden border border-r-2 border-b-2 border-solid p-3">
-                    {next.frontmatter.title} →
+                  <div className="button text-right overflow-hidden h-full">
+                    <div className="text-sm">Next →</div>
+                    <div className="pt-1 text-malachite-700">
+                      {next.frontmatter.title}
+                    </div>
                   </div>
                 </Link>
               </div>
