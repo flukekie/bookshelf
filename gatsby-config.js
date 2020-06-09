@@ -79,7 +79,6 @@ module.exports = {
         ],
       },
     },
-
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -91,28 +90,16 @@ module.exports = {
     {
       resolve: `gatsby-plugin-feed`,
       options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
-              }
-            }
-          }
-        `,
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.edges.map(edge => {
                 return Object.assign({}, edge.node.frontmatter, {
-                  description: edge.node.excerpt,
+                  description: edge.node.frontmatter.description,
                   date: edge.node.frontmatter.created,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  custom_elements: [{ "content:encoded": edge.node.html }],
+                  custom_elements: [{ "content:encoded": edge.node.html, "dc:creator":site.siteMetadata.author.name }],
                 })
               })
             },
@@ -120,14 +107,15 @@ module.exports = {
               {
                 allMarkdownRemark(
                   sort: { order: DESC, fields: [frontmatter___created] },
+                  filter: { fileAbsolutePath: { regex: "/(posts)/.*\\\\.md$/" } },
                 ) {
                   edges {
                     node {
-                      excerpt
                       html
                       fields { slug }
                       frontmatter {
                         title
+                        description
                         created
                       }
                     }
@@ -136,7 +124,7 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
-            title: "flukekie.net",
+            title: "Flukekie's Bookshelf",
           },
         ],
       },

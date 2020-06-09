@@ -5,7 +5,17 @@
   "version": "0.4.0",
   "author": "Flukekie",
   "bugs": {
-    "url": "https://github.com/flukekie/flukekie.net/issues"
+    "url": "https://github.com/flukekie/bookshelf/issues"
+  },
+  "homepage": "https://github.com/flukekie/bookshelf#readme",
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "main": "n/a",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flukekie/bookshelf.git"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
@@ -13,7 +23,6 @@
     "@fortawesome/free-regular-svg-icons": "^5.12.1",
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
     "@fortawesome/react-fontawesome": "^0.1.8",
-    "bulma": "^0.9.0",
     "gatsby": "^2.19.17",
     "gatsby-image": "^2.2.41",
     "gatsby-plugin-feed": "^2.3.27",
@@ -45,16 +54,6 @@
   "devDependencies": {
     "node-sass": "^4.13.1",
     "prettier": "^2.0.5"
-  },
-  "homepage": "https://github.com/flukekie/bookshelf#readme",
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
-  "main": "n/a",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/flukekie/bookshelf.git"
   },
   "scripts": {
     "build": "gatsby build",
