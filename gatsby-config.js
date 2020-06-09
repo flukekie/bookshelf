@@ -99,7 +99,7 @@ module.exports = {
                   date: edge.node.frontmatter.created,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  custom_elements: [{ "content:encoded": edge.node.html, "dc:creator":site.siteMetadata.author.name }],
+                  custom_elements: [{ "content:encoded": edge.node.html, }],
                 })
               })
             },
