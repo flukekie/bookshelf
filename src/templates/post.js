@@ -72,7 +72,7 @@ export default class PostTemplate extends React.Component {
               <Image fluid={post.frontmatter.cover.childImageSharp.fluid} />
             )}
 
-            {/* the meat */}
+            {/* main content thing */}
             <section
               className="content mt-8"
               dangerouslySetInnerHTML={{ __html: post.html }}
@@ -133,9 +133,7 @@ export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
-      excerpt(pruneLength: 160)
       html
-      tableOfContents
       frontmatter {
         title
         description

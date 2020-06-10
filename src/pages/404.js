@@ -9,17 +9,11 @@ class NotFoundPage extends React.Component {
     return (
       <Layout>
         <SEO title="Page Not Found" />
-        <section className="hero is-large is-dark">
-          <div className="hero-body">
-            <div className="container">
-              <div className="columns">
-                <div className="column">
-                  <h1 className="title">Page not found</h1>
-                  <h2 className="subtitle">This is embarrasing...</h2>
-                </div>
-              </div>
-            </div>
-          </div>
+        <section className="container max-w-4xl">
+          <header className="text-center">
+            <h1 className="text-6xl">404</h1>
+            <p>Page not found</p>
+          </header>
         </section>
       </Layout>
     )
