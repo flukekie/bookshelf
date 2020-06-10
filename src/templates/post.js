@@ -31,7 +31,6 @@ export default class PostTemplate extends React.Component {
         <section className="container max-w-4xl px-4 lg:px-0">
           <main>
             <header className="mb-8">
-
               {/* mini primary tag */}
               {post.frontmatter.tags && (
                 <p className="text-sm">
@@ -48,7 +47,7 @@ export default class PostTemplate extends React.Component {
               <h1 className="font-bold text-3xl lg:text-4xl">
                 {post.frontmatter.title}
               </h1>
-              
+
               {/* description */}
               {post.frontmatter.description && (
                 <p className="text-xl lg:text-2xl">
@@ -59,11 +58,8 @@ export default class PostTemplate extends React.Component {
               {/* date stuff */}
               <p className="text-base pt-1">
                 {post.frontmatter.date_created}
-                {post.frontmatter.created !== post.frontmatter.updated && (
-                  <p className="text-base pt-1">
-                    Updated: {post.frontmatter.date_updated}
-                  </p>
-                )}
+                {post.frontmatter.created !== post.frontmatter.updated &&
+                  ` (Updated: ${post.frontmatter.date_updated})`}
               </p>
             </header>
 
