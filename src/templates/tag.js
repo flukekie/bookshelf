@@ -26,10 +26,9 @@ const Tags = ({ pageContext, data }) => {
       </section>
 
       <section className="container">
-        <div className="flex flex-wrap -mx-0 md:-mx-2">
+      <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {posts.map(({ node }) => {
             return (
-              <div className="w-full md:w-1/2 lg:w-1/3 px-4 md:px-2 pb-4">
                 <Card
                   link={node.fields.slug}
                   title={node.frontmatter.title}
@@ -45,7 +44,6 @@ const Tags = ({ pageContext, data }) => {
                   }
                   tags={node.frontmatter.tags && node.frontmatter.tags}
                 />
-              </div>
             )
           })}
         </div>

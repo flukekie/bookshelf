@@ -1,10 +1,7 @@
 @tailwind base;
-
-@tailwind components;
-
 html {
   font-size: 18px;
-  @apply font-body;
+
 }
 
 body {
@@ -13,6 +10,9 @@ body {
     @apply bg-gray-900 text-gray-300;
   }
 }
+@tailwind components;
+
+
 
 .header {
   @apply border-gray-300;
