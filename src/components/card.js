@@ -4,41 +4,48 @@ import { kebabCase } from "lodash"
 
 import Image from "gatsby-image"
 
-export default ({ link, title, subtitle, body, image, tags, className }) => (
-  <Link to={link}>
-    <div className="card overflow-hidden h-full flex flex-col">
-      {/* image header */}
-      <div className="w-full">
+export default ({
+  link,
+  title,
+  datetext,
+  datetime,
+  body,
+  image,
+  tags,
+  className,
+}) => (
+  <article className="card overflow-hidden h-full flex flex-col">
+    {/* image header */}
+    <Link to={link} className="w-full">
+
         {image && image.fixed && <Image fixed={image.fixed} />}
         {image && image.fluid && <Image fluid={image.fluid} />}
-      </div>
 
-      {/* body */}
-      <div className="px-3 md:px-4 pt-2 pb-1 h-full">
-        <p className="text-sm pb-1">
-          <Link
-            to={`/tag/${kebabCase(tags[0])}/`}
-            className="link text-sm"
-          >
-            {tags[0]}
-          </Link>
-        </p>
+    </Link>
 
-        <h1 className="font-bold text-xl">
-          <Link to={link}>{title}</Link>
-        </h1>
-        <p
-          className="text-base mt-2"
-          dangerouslySetInnerHTML={{
-            __html: body,
-          }}
-        ></p>
-      </div>
-
-      {/* footer */}
-      <div className="px-3 md:px-4 py-1">
-        <p className="text-sm">{`${subtitle}`}</p>
-      </div>
+    {/* body */}
+    <div className="px-3 md:px-4 pt-2 pb-1 h-full">
+      <h1 className="font-bold text-xl">
+        <Link to={link}>{title}</Link>
+      </h1>
+      <p
+        className="text-base mt-2"
+        dangerouslySetInnerHTML={{
+          __html: body,
+        }}
+      ></p>
     </div>
-  </Link>
+
+    <footer className="px-3 md:px-4 py-1">
+      <p className="text-sm">
+        <time dateTime={datetime}>{`${datetext}`}</time>
+
+        {tags && (
+          <Link to={`/tag/${kebabCase(tags[0])}/`} className="link text-sm ml-2">
+            {`${tags[0]}`}
+          </Link>
+        )}
+      </p>
+    </footer>
+  </article>
 )

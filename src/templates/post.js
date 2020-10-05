@@ -28,70 +28,70 @@ export default class PostTemplate extends React.Component {
           tags={post.frontmatter.tags}
         />
 
-        <section className="container max-w-4xl px-4 lg:px-0">
-          <main>
-            <header className="mb-8">
-              {/* mini primary tag */}
-              {post.frontmatter.tags && (
-                <p className="text-sm">
-                  <Link
-                    to={`/tag/${kebabCase(post.frontmatter.tags[0])}/`}
-                    className="link text-sm"
-                  >
-                    {post.frontmatter.tags[0]}
-                  </Link>
-                </p>
-              )}
+        <main className="container max-w-2xl px-4 lg:px-0">
+          <header className="mb-8">
+            {/* mini primary tag */}
+            {post.frontmatter.tags && (
+              <p className="text-sm">
+                <Link
+                  to={`/tag/${kebabCase(post.frontmatter.tags[0])}/`}
+                  className="link text-sm"
+                >
+                  {post.frontmatter.tags[0]}
+                </Link>
+              </p>
+            )}
 
-              {/* title */}
-              <h1 className="font-bold text-3xl lg:text-4xl">
-                {post.frontmatter.title}
-              </h1>
+            {/* title */}
+            <h1 className="font-bold text-3xl lg:text-4xl">
+              {post.frontmatter.title}
+            </h1>
 
-              {/* description */}
-              {post.frontmatter.description && (
-                <p className="text-xl lg:text-2xl">
-                  {post.frontmatter.description}
-                </p>
-              )}
+            {/* description */}
+            {post.frontmatter.description && (
+              <p className="text-xl lg:text-2xl">
+                {post.frontmatter.description}
+              </p>
+            )}
 
-              {/* date stuff */}
+            {/* date stuff */}
+            <time datetime={post.frontmatter.created}>
               <p className="text-base pt-1">
                 {post.frontmatter.date_created}
                 {post.frontmatter.created !== post.frontmatter.updated &&
                   ` (Updated: ${post.frontmatter.date_updated})`}
               </p>
-            </header>
+            </time>
+          </header>
 
-            {/* cover image */}
-            {post.frontmatter.cover && (
-              <Image fluid={post.frontmatter.cover.childImageSharp.fluid} />
+          {/* cover image */}
+          {post.frontmatter.cover && (
+            <Image fluid={post.frontmatter.cover.childImageSharp.fluid} />
+          )}
+
+          {/* main content thing */}
+          <section
+            className="content mt-8"
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          />
+        </main>
+        <aside className="container max-w-2xl px-4 lg:px-0">
+          {/* content tags */}
+          <nav className="flex flex-wrap justify-center">
+            {post.frontmatter.tags && (
+              <div className="tags">
+                {post.frontmatter.tags.map((tag) => (
+                  <Link
+                    to={`/tag/${kebabCase(tag)}/`}
+                    className="tag inline-block text-sm font-semibold"
+                    key={tag + `tag`}
+                  >
+                    {tag}
+                  </Link>
+                ))}
+              </div>
             )}
-
-            {/* main content thing */}
-            <section
-              className="content mt-8"
-              dangerouslySetInnerHTML={{ __html: post.html }}
-            />
-
-            {/* content tags */}
-            <nav className="flex flex-wrap justify-center">
-              {post.frontmatter.tags && (
-                <div className="tags">
-                  {post.frontmatter.tags.map((tag) => (
-                    <Link
-                      to={`/tag/${kebabCase(tag)}/`}
-                      className="tag inline-block text-sm font-semibold"
-                      key={tag + `tag`}
-                    >
-                      {tag}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </nav>
-          </main>
-
+          </nav>
           {/* previous and next page buttons */}
           <nav className="flex flex-wrap justify-center -mx-2 mt-8 mb-4">
             {previous && (
@@ -119,7 +119,7 @@ export default class PostTemplate extends React.Component {
               </div>
             )}
           </nav>
-        </section>
+        </aside>
       </Layout>
     )
   }

@@ -26,12 +26,12 @@ module.exports = {
       fontFamily: {
         sans: ["Bai Jamjuree", ...defaultTheme.fontFamily.sans],
         serif: ["Maitree", ...defaultTheme.fontFamily.serif],
-        mono: ["Fira Code", ...defaultTheme.fontFamily.serif],
+        mono: ["Fira Code", ...defaultTheme.fontFamily.mono],
       },
     },
   },
   purge: {
-    enabled: true,
+    enabled: false,
     content: ['./src/**/*.js'],
   },
   variants: {},

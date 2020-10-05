@@ -14,14 +14,15 @@ export default class Homepage extends React.Component {
       <Layout>
         <SEO />
 
-        <section className="container">
+        <main className="container">
           <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {posts.map(({ node }) => {
               return (
                 <Card
                   link={node.fields.slug}
                   title={node.frontmatter.title}
-                  subtitle={node.frontmatter.created}
+                  datetext={node.frontmatter.datetext}
+                  datetime={node.frontmatter.datetime}
                   body={
                     node.frontmatter.subtitle ||
                     node.frontmatter.description ||
@@ -36,7 +37,7 @@ export default class Homepage extends React.Component {
               )
             })}
           </div>
-        </section>
+        </main>
       </Layout>
     )
   }
@@ -60,7 +61,8 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            created(formatString: "LL")
+            datetext: created(formatString: "LL")
+            datetime: created
             title
             description
             tags

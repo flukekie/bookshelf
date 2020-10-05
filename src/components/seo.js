@@ -80,6 +80,7 @@ function SEO({
       <html lang={lang} />
       <meta name="description" content={metaDescription} />
 
+
       <meta name="og:site_name" content={site.title} />
       <meta name="og:type" content={isArticle ? `article` : `website`} />
       <meta name="og:title" content={metaTitle} />

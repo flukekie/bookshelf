@@ -32,7 +32,7 @@ const Tags = ({ pageContext, data }) => {
                 <Card
                   link={node.fields.slug}
                   title={node.frontmatter.title}
-                  subtitle={node.frontmatter.created}
+                  date={node.frontmatter.created}
                   body={
                     node.frontmatter.subtitle ||
                     node.frontmatter.description ||
